@@ -1,0 +1,123 @@
+.container {
+  min-width: 320px;
+    height: 100vh;
+    font-family: Gilroy;
+    overflow: hidden;
+}
+.starting {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: url("./images/starting__bg.png");
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: end;
+    justify-content: center;
+}
+
+.button-settings {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    background: url("./images/settings.svg");
+    cursor: pointer;
+    background-size: 100% 100%;
+    background-position: center;
+    filter: invert(99%) sepia(9%) saturate(206%) hue-rotate(50deg) brightness(100%) contrast(88%);
+    transition: transform 0.5s;
+    &:hover {
+        transform: scale(1.2);
+        transition: transform 0.5s;
+    }
+}
+
+.starting__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+   
+    padding-bottom:85px;
+}
+
+.button__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+
+}
+
+.starting__logo {
+    position: relative;
+    width: 166px;
+    height: 62px;
+    & p {
+        width: 100%;
+        height: 100%;
+        font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 60px;
+    text-align: right;
+    color: white;
+    letter-spacing: -0.914286px;
+    }
+    & .circle {
+        position: absolute;
+        display: block;
+        width: 62px;
+        height: 62px;
+        border: 1px solid white;
+        border-radius: 50%;
+        bottom: 0;
+        left: 0;
+        
+        
+    }
+    & .left {
+        left: 0;
+    }
+    & .right {
+        left: 31px;
+    }
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 16px;
+    & p {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: white;
+    }
+    & .github-logo {
+        width: 23px;
+        height: 23px;
+        background: url("./images/github.svg") ;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+    & .rss-logo {
+        width: 61px;
+        height: 23px;
+        background: url("./images/rs_school.svg");
+        background-size: 100% 100%;
+        background-position: center;
+        filter: invert(100%) sepia(82%) saturate(2%) hue-rotate(89deg) brightness(110%) contrast(100%);
+    }
+}
+
+@import "start-page-tablet";
+@import "start-page-desktop";

@@ -1,0 +1,64 @@
+@media (min-width:1440px) {
+    .container {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    .starting {
+        align-items: flex-end;
+        background: url("./images/starting__bg-desktop.png");
+        background-size: 100% 100%;
+        background-position: center;
+    }
+    .button-settings {
+        top: 70px;
+        right: 70px;
+        width: 45px;
+        height: 45px;
+    }
+    .starting__logo {
+        width: 440px;
+        height: 165px;
+        margin-bottom: 140px;
+        & p {
+            font-family: Gilroy;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 111.325px;
+            line-height: 159px;
+            text-align: center;
+            letter-spacing: -2.42341px;
+        }
+        & .circle {
+            width: 165px;
+            height: 165px;
+        }
+        & .right {
+            left: 82.5px;
+        }
+    }
+    .button__wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 40px;
+    
+    }
+    .footer {
+        padding: 25px 40px;
+        & .rss-logo {
+            width: 85px;
+            height: 32px;
+        }
+        & .github-logo {
+            width: 32px;
+            height: 32px;
+        }
+        & p {
+            font-family: Gilroy;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+@media (min-width:768px) {
+    .container {
+        height: 100vh;
+    }
+    .starting {
+        align-items: flex-end;
+        background: url("./images/starting__bg-tablet.png");
+        background-size: 100% 100%;
+        background-position: center;
+    }
+    .starting__content {
+        margin-bottom: 70px;
+    }
+    .button-settings {
+        top: 36px;
+        right: 36px;
+        width: 40px;
+        height: 40px;
+    }
+    .starting__logo {
+        width: 320px;
+        height: 120px;
+        margin-bottom: 90px;
+        & p {
+            font-family: Gilroy;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 81.2903px;
+            line-height: 116px;
+        }
+        & .circle {
+            width: 120px;
+            height: 120px;
+        }
+        & .right {
+            left: 60px;
+        }
+    }
+    .footer {
+        padding: 27px 32px;
+        & .rss-logo {
+            width: 85px;
+            height: 32px;
+        }
+        & .github-logo {
+            width: 32px;
+            height: 32px;
+        }
+        & p {
+            font-family: Gilroy;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+}

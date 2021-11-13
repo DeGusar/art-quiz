@@ -64,9 +64,9 @@
         align-self: start;
     }
     .categories-images__wrapper {
-        padding: 0;
-        & div {
-            width: calc(100%/3 - 52px) ;
+        margin-bottom: 0;
+        & .categoryImgWrap {
+            width: calc(100%/3 - 53px/3) ;
         }
     }
     .categories__nav {

@@ -33,7 +33,7 @@ function audioChangeVolume() {
     volumeScale.style.background = `linear-gradient(to right, rgb(3, 168, 3) 0%, rgb(3, 168, 3) ${audio.volume*100}%, #A4A4A4 ${audio.volume*100}%, #A4A4A4 100%)`
 }
 volumeScale.addEventListener('change', audioChangeVolume);
-let temporary;
+
 
 function audioMute() {
     audio.volume = 0;

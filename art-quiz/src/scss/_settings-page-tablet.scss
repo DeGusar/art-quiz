@@ -1,0 +1,22 @@
+@media (min-width:768px) {
+    .settings {
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .settings__title {
+        margin-top: 20px;
+    }
+    
+    .settings__back-logo {
+        left: 30px;
+    }
+    .settings__progress,  .volume__wrapper {
+        width: 616px;
+    }
+    .settings-buttons__wrapper {
+        padding-bottom: 100px;
+    }
+   
+    
+}

@@ -7,21 +7,20 @@
     <title>Art-quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./fonts/fonts.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-</head>
+   </head>
 <body>
    <div class="container">
-       <div class="starting">
+       <div class="starting ">
            <div class="button-settings"></div>
            <div class="starting__content">
-                <div class="starting__logo">
+                <div class="starting__logo ">
                     <p>Art Quiz</p>
                     <span class="circle left"></span>
                     <span class="circle right"></span>
                 </div>
                 <div class="button__wrapper">
-                    <button class="button button-starting">Artist quiz</button>
-                    <button class="button button-starting">Pictures quiz</button>
+                    <button class="button button-starting button-artists">Artist quiz</button>
+                    <button class="button button-starting button-pictures">Pictures quiz</button>
                 </div>
                
            </div>
@@ -35,13 +34,17 @@
        <div class="settings hide">
            <div class="settings__back-logo"></div>
            <p class="settings__title">Settings</p>
-           <p class="settings__text">Volume</p>
-           <input type="range" class="settings__progress" value="50" min="0" max="100" step="1">
+           <div class="volume-block__wrapper">
+            <p class="settings__text">Volume</p>
+           <input type="range" class="settings__progress" value="100" min="0" max="100" step="1">
            <div class="volume__wrapper">
                <div class="mute"></div>
                <div class="unmute"></div>
            </div>
-           <p class="settings__text">Time game</p>
+           </div>
+           
+           <div class="time__wrapper">
+            <p class="settings__text">Time game</p>
            <div class="time-switcher__wrapper">
                 <p class="switcher-status">Off</p>
                 <div class="custom-checkbox">
@@ -54,12 +57,16 @@
                 </label>
                 </div>
            </div>
-           <p class="settings__text">Time to answer</p>
-           <div class="time-buttons__wrapper">
-            <button type="button" class="button__plus" onclick="this.nextElementSibling.stepDown()">–</button>
-            <input type="number" min="0" max="60" name="timer" value="20" class="timer__input">
-            <button type="button" class="button__minus" onclick="this.previousElementSibling.stepUp()">+</button>
            </div>
+           <div class="time-input__wrapper">
+            <p class="settings__text">Time to answer</p>
+            <div class="time-buttons__wrapper">
+             <button type="button" class="button__plus" onclick="this.nextElementSibling.stepDown()">–</button>
+             <input type="number" min="5" max="30" step="5" name="timer" value="20" class="timer__input">
+             <button type="button" class="button__minus" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+           </div>
+          
             <div class="settings-buttons__wrapper">
                 <button class="button button-save">Default</button>
                 <button class="button button-save">Save</button>
@@ -71,6 +78,42 @@
             <p>2021</p>
         </footer>
        </div>
+       <div class="categories hide">
+           <header>
+            <div class="starting__logo categories__logo">
+                <p><span>Art</span> Quiz</p>
+                <span class="circle left"></span>
+                <span class="circle right"></span>
+            </div>
+            <div class="header__nav">
+                <p>Home</p>
+                <p><span class="orange">Categories</span></p>
+                <p>Score</p>
+            </div>
+             </header>
+           <div class="categories__title">Categories</div>
+           <div class="categories-images__wrapper"></div>
+           <nav class="categories__nav">
+               <div class="nav__home">
+                <div class="nav__home-logo"></div>
+                <p>Home</p>
+               </div>
+               <div class="nav__categories">
+                <div class="nav__categories-logo"></div>
+                <p><span class="orange">Categories</span></p>
+               </div>
+               <div class="nav__score">
+                <div class="nav__score-logo"></div>
+                <p>Score</p>
+               </div>
+           </nav>
+            <footer class="footer">
+            <a href="https://github.com/DeGusar" target="blank" class="github-logo"></a>
+            <a href="https://rs.school/js/" target="blank" class="rss-logo"></a>   
+            <p>2021</p>
+           </footer>
+       </div>
+       <audio src="#" class="audio"></audio>
    </div>
 </body>
 </html>

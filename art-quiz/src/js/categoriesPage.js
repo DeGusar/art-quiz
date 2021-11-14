@@ -12,6 +12,11 @@ import { showStartingPage } from "./startingPage";
 import { hideStartingPage } from "./startingPage";
 import { createQuestionsAuthorPage, showQuestionAuthorPage } from "./questionsAuthorsPage";
 import { questionsAuthorPage } from "./questionsAuthorsPage";
+import { timer } from "./timerFunction";
+import { timerProgress } from "./questionsAuthorsPage";
+import { countTimer } from "./questionsAuthorsPage";
+
+
 
 
 
@@ -41,6 +46,7 @@ export function createCategories(array) {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsAuthorPage(array[i])
+          timer(timerProgress, 10, countTimer);
         })
     }
 }

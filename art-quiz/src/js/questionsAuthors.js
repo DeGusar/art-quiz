@@ -25,6 +25,9 @@ export class Question {
         this.secondWrong = getRandom(0, authorArray.length - 1, [this.rightAnswer, this.firstWrong]);
         this.thirdWrong = getRandom(0, authorArray.length - 1, [this.rightAnswer, this.firstWrong, this.secondWrong]);
         this.answers = shuffle([this.rightAnswer, this.firstWrong, this.secondWrong, this.thirdWrong]);
+        this.year = images[this.question].year;
+        this.name = images[this.question].name;
+        this.author = images[this.question].author;
     }
     checkAnswer(index) {
         if (this.answers[index] === this.rightAnswer) {

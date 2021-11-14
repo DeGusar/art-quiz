@@ -1,0 +1,66 @@
+.questions-authors__popupAnswer {
+    background-color: white;
+    border-radius: 15px;
+    width: clamp(300px,300/320*100%,340px );
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    padding: 30px;
+    
+}
+.popupAnswer__wrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+.popupAnswer__marker {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1;
+    
+}
+.popupAnswer__marker-right {
+    background: url("./images/right.svg");
+    background-size: 100% 100%;
+    background-position: center;
+}
+.popupAnswer__marker-wrong {
+    background: url("./images/wrong.svg");
+    background-size: 100% 100%;
+    background-position: center;
+}
+.popupAnswer__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 39px;
+    text-align: center;
+    color: #010101;
+}
+.popupAnswer__author {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #010101;
+}

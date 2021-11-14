@@ -20,7 +20,8 @@ import { showQuestionAuthorPage } from "./js/questionsAuthorsPage"
 import { category } from "./js/categoriesPage"
 import { createQuestionsAuthorPage } from "./js/questionsAuthorsPage"
 import { questionsAuthorPage } from "./js/questionsAuthorsPage"
-
+import { timerProgress } from "./js/questionsAuthorsPage"
+import { countTimer } from "./js/questionsAuthorsPage"
 
 import "./js/questionsAuthors"
 import "./js/questionsPictures"

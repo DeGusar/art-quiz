@@ -20,7 +20,7 @@ import images from "../images";
         }
     }
 
-    score(index) {
+    scoreCount(index) {
         let value = this.questions[this.current].checkAnswer(index);
         this.score += value;
         let correct = -1;
@@ -36,7 +36,7 @@ import images from "../images";
             }
         }
         this.next()
-        return correct
+        this.score = correct
     }
     
     end() {

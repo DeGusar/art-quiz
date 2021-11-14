@@ -1,0 +1,61 @@
+.questions-authors__popupClose {
+    background-color: white;
+    border-radius: 15px;
+    width: clamp(300px,300/320*100%,340px );
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 258px;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+.popup__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #010101;
+}
+.popup-buttons__wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 10px;
+    justify-content: center;
+}
+.popup-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+   
+    & span {
+        width: 14px;
+        height: 14px;
+        display: block;
+       background: url('./images/close__icon_black.svg');
+       background-position: center;
+       background-size: 100% 100%;
+    }
+}
+
+.container .visible__popup {
+    opacity: 1;
+    pointer-events: all;
+   transition: all 2s;
+   
+}

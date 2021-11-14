@@ -1,0 +1,19 @@
+@media (min-width:768px) {
+    .questions-authors__popupAnswer {
+        width: 522px;
+        height: 689px;
+    }
+    .popupAnswer__wrapper {
+        height: 416px;
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .popupAnswer__marker {
+        width: 60px;
+        height: 60px;
+        left: 30px;
+        bottom:30px;
+    }
+}

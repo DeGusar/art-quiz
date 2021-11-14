@@ -69,7 +69,7 @@
 }
 .question__img {
     width: 100%;
-    height: auto;
+    height: clamp(260px,294/360*100vw,453px);
     border-radius: 15px;
 
 }
@@ -83,3 +83,5 @@
        
 }
 
+@import "./questions-author-tablet";
+@import "./questions-author-desktop"

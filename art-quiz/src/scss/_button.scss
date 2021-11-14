@@ -34,7 +34,7 @@
     
 }
 .button-answer {
-    width: 158px;
+    width: clamp(158px,158/360*100vw,323px);
     height: 48px;
     font-style: normal;
     font-weight: 500;
@@ -70,5 +70,6 @@
 }
 
 @import "button-tablet";
+@import "./button-desktop";
 
 

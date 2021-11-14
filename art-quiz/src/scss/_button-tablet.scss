@@ -3,4 +3,12 @@
         width: 293px;
         height: 56px;
     }
+    .button-answer {
+        width: clamp(323px,323/768*100vw,400px);
+        height: clamp(48px,48/768*100vw,62px);
+    }
+    .popupAnswer__button {
+        width: 400px;
+        height: 62px;
+    }
 }

@@ -93,7 +93,7 @@ function renderPopupAnswer(array,isCorrect,index) {
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
-    img.src = `../images/img/${array.questions[array.current].question}.jpg`
+    img.src = `../images/full/${array.questions[array.current].question}full.jpg`
     let span = document.createElement('span');
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {

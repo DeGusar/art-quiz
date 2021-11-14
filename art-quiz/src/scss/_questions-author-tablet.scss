@@ -1,0 +1,25 @@
+@media (min-width:768px) {
+    .questions-authors {
+        padding: 20px 42px;
+    }
+    .timer-wrapper {
+        margin-top: 0;
+    }
+    .question__text {
+        padding-top: 15px;
+    }
+    .questions-authors__container {
+        margin-bottom: 85px;
+        width: clamp(665px,665/768*100vw,825px);
+        max-height: clamp(453px,453/768*100vw,500px);
+        row-gap: 15px;
+    }
+    .question-buttons__wrapper {
+        column-gap: 18px;
+        row-gap: 20px;
+    }
+    .question__img {
+        max-height: clamp(453px,453/768*100vw,500px)
+    }
+}
+

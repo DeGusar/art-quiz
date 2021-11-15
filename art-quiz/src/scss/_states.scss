@@ -1,0 +1,13 @@
+.unclickable {
+    pointer-events: none;
+}
+.container .hide {
+    display: none;
+   
+}
+.container .visible__popup {
+    opacity: 1;
+    pointer-events: all;
+   transition: all 2s;
+   
+}

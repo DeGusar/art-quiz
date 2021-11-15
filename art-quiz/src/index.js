@@ -22,6 +22,15 @@ import { createQuestionsAuthorPage } from "./js/questionsAuthorsPage"
 import { questionsAuthorPage } from "./js/questionsAuthorsPage"
 import { timerProgress } from "./js/questionsAuthorsPage"
 import { countTimer } from "./js/questionsAuthorsPage"
+import { playSoundRight } from "./js/audio"
+import { renderPopupAnswer } from "./js/questionsAuthorsPage"
+import { playSoundWrong } from "./js/audio"
+import { Saves } from "./js/saves"
+import { saves } from "./js/saves"
+import { volumeScale } from "./js/settingsPage"
+import { checkboxTimer } from "./js/settingsPage"
+import { timerInput } from "./js/settingsPage"
+
 
 import "./js/questionsAuthors"
 import "./js/questionsPictures"
@@ -31,6 +40,8 @@ import "./js/startingPage"
 import "./js/categoriesPage"
 import "./js/timerFunction"
 import "./js/questionsAuthorsPage"
+import "./js/audio"
+import "./js/saves"
 
 
 

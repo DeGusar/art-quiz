@@ -46,7 +46,7 @@ export function createCategories(array) {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsAuthorPage(array[i])
-          timer(timerProgress, 10, countTimer);
+         
         })
     }
 }

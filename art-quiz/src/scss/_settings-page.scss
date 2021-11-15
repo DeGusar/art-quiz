@@ -27,6 +27,8 @@
     line-height: 28px;
     letter-spacing: -0.914286px;
     color: white;
+   /*  opacity: 0;
+    pointer-events: none; */
     
 }
 .settings__back-logo {
@@ -173,6 +175,8 @@
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    /* opacity: 0;
+    pointer-events: none; */
 }
 .timer__input {
     all: unset;

@@ -7,6 +7,7 @@
     <title>Art-quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
    </head>
 <body>
    <div class="container">
@@ -45,7 +46,7 @@
            
            <div class="time__wrapper">
             <p class="settings__text">Time game</p>
-           <div class="time-switcher__wrapper">
+           <div class="time-switcher__wrapper ">
                 <p class="switcher-status">Off</p>
                 <div class="custom-checkbox">
                 <input id="status-timer" class="checkbox" type="checkbox"  name="status-timer">
@@ -60,16 +61,16 @@
            </div>
            <div class="time-input__wrapper">
             <p class="settings__text">Time to answer</p>
-            <div class="time-buttons__wrapper">
+            <div class="time-buttons__wrapper ">
              <button type="button" class="button__plus" onclick="this.nextElementSibling.stepDown()">–</button>
-             <input type="number" min="5" max="30" step="5" name="timer" value="20" class="timer__input">
+             <input type="number" min="5" max="30" step="5" name="timer" value="0" class="timer__input">
              <button type="button" class="button__minus" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
            </div>
           
             <div class="settings-buttons__wrapper">
-                <button class="button button-save">Default</button>
-                <button class="button button-save">Save</button>
+                <button class="button button-save button__default">Default</button>
+                <button class="button button-save button__save">Save</button>
         </div>
         
         <footer class="footer">
@@ -144,7 +145,8 @@
             <p>2021</p>
            </footer>
        </div>
-       <audio src="#" class="audio"></audio>
+       <audio src="./sounds/right.mp3" class="audio audioRight"></audio>
+       <audio src="./sounds/wrong.mp3" class="audio audioWrong"></audio>
    </div>
 </body>
 </html>

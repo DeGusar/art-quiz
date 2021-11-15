@@ -2,6 +2,7 @@ import { timer } from "./timerFunction";
 import { showCategoriesPage } from "./categoriesPage";
 import { showStartingPage } from "./startingPage";
 import { category } from "./categoriesPage";
+import { playSoundRight, playSoundWrong } from "./audio";
 
 export const timerProgress = document.querySelector('.timer__progress');
 export const countTimer = document.querySelector('.time__count');
@@ -9,6 +10,7 @@ export const questionsAuthorPage = document.querySelector('.questions-authors');
 export const questionsAuthorPopupClose = document.querySelector('.questions-authors__popupClose');
 const questionsAuthorsContainer = document.querySelector('.questions-authors__container');
 const questionsAuthorsPopupAnswerContainer = document.querySelector('.questions-authors__popupAnswer');
+const closeQuestionsAuthorPage = document.querySelector('.popup-button-yes');
 
 
 
@@ -35,6 +37,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
         hidePopupClose()
     }
     if (e.target.closest('.popup-button-yes')) {
+        questionsAuthorsPopupAnswerContainer.innerHTML = "";
         hideQuestionAuthorPage();
         showCategoriesPage();
         hidePopupClose();
@@ -49,10 +52,23 @@ export function hideQuestionAuthorPage() {
 }
 export function showQuestionAuthorPage() {
     questionsAuthorPage.classList.remove('hide');
-  }
+}
+  
+
 
 export function createQuestionsAuthorPage(array) {
-   
+    let canceltTimer = timer(timerProgress, 10, countTimer);
+    timerProgress.addEventListener('change', () => {
+            if (timerProgress.value == 0 ) {
+                playSoundWrong();
+                renderPopupAnswer(array,0,0)
+            }
+    });
+    function closePage() {
+        canceltTimer();
+        closeQuestionsAuthorPage.removeEventListener('click', closePage)
+    }
+    closeQuestionsAuthorPage.addEventListener('click', closePage);
     questionsAuthorsContainer.innerHTML = '';
     let div = document.createElement('div');
     div.classList.add('question-buttons__wrapper');
@@ -67,6 +83,7 @@ export function createQuestionsAuthorPage(array) {
     questionsAuthorsContainer.append(buttonsWrapper);
        
     array.questions[array.current].answers.forEach((item, index) => {
+       
         let button = document.createElement('button');
         button.classList.add('button-answer');
         button.classList.add('button');
@@ -74,21 +91,26 @@ export function createQuestionsAuthorPage(array) {
         buttonsWrapper.append(button);
         
         button.addEventListener('click', () => {
+            canceltTimer();
             if (array.questions[array.current].checkAnswer(index)) {
                 button.classList.add('green__button');
-                renderPopupAnswer(array,1,index)
+                playSoundRight()
+                renderPopupAnswer(array, 1, index)
+                closeQuestionsAuthorPage.removeEventListener('click', closePage)
 
             } else {
                 button.classList.add('red__button');
-                renderPopupAnswer(array,0,index)
+                playSoundWrong()
+                renderPopupAnswer(array, 0, index)
+                closeQuestionsAuthorPage.removeEventListener('click', closePage)
             }
         })
     })
-timer(timerProgress, 10, countTimer);
+
     
 }
 
-function renderPopupAnswer(array,isCorrect,index) {
+export function renderPopupAnswer(array,isCorrect,index) {
     questionsAuthorsPopupAnswerContainer.innerHTML = "";
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');

@@ -2,6 +2,10 @@ import { Question } from "./questionsAuthors";
 import { QuestionPictures } from "./questionsPictures";
 import images from "../images";
 
+
+
+
+
  export class Category {
     constructor(category, questions) {
         this.category = category;
@@ -12,7 +16,7 @@ import images from "../images";
    
     next() {
         
-        if (this.current > 9) {
+        if (this.current >= 9) {
             this.end()
         } else {
            
@@ -23,23 +27,12 @@ import images from "../images";
     scoreCount(index) {
         let value = this.questions[this.current].checkAnswer(index);
         this.score += value;
-        let correct = -1;
-        if (value >= 1) {
-            correct = index
-        }
-        else {
-            for (let i = 0; i < this.questions[this.current].answers.length; i++) {
-                if (this.questions[this.current].answers[i] === this.questions[this.current].rightAnswer) {
-                    correct = i;
-                    break;
-                }
-            }
-        }
         this.next()
-        this.score = correct
     }
     
-    end() {
+     end() {
+       
+       
         console.log('End')
     }
 

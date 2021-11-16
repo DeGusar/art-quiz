@@ -10,7 +10,7 @@ import { initAuthorsQuestions } from "./categoriesPage";
 import { initPicturesQuestions } from "./categoriesPage";
 
 
-const buttonAuthors = document.querySelector('.button-artists')
+export const buttonAuthors = document.querySelector('.button-artists')
 const buttonPictures = document.querySelector('.button-pictures')
 
 export function showStartingPage() {

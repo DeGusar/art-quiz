@@ -11,3 +11,24 @@
    transition: all 2s;
    
 }
+
+.grey {
+    filter: grayscale(100%);
+}
+
+.container .green__button {
+    background-color: #3DDA69;
+    color: white;
+    
+}
+.container .red__button {
+    background-color: #FF7E7E;
+    color: #fff
+}
+
+.green__border {
+    border: 2px solid green;
+}
+.red__border {
+    border: 2px solid #FF7E7E;
+}

@@ -15,7 +15,7 @@ import { initPicturesQuestions } from "./js/categoriesPage"
 import { showStartingPage } from "./js/startingPage"
 import { hideStartingPage } from "./js/startingPage"
 import { timer } from "./js/timerFunction"
-import { hideQuestionAuthorPage} from "./js/questionsAuthorsPage"
+import { createQuestionsPicturesPage, hideQuestionAuthorPage} from "./js/questionsAuthorsPage"
 import { showQuestionAuthorPage } from "./js/questionsAuthorsPage"
 import { category } from "./js/categoriesPage"
 import { createQuestionsAuthorPage } from "./js/questionsAuthorsPage"
@@ -30,6 +30,8 @@ import { saves } from "./js/saves"
 import { volumeScale } from "./js/settingsPage"
 import { checkboxTimer } from "./js/settingsPage"
 import { timerInput } from "./js/settingsPage"
+import { buttonAuthors } from "./js/startingPage"
+
 
 
 import "./js/questionsAuthors"

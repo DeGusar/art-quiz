@@ -13,6 +13,7 @@ export const timerInput = document.querySelector('.timer__input');
 const checkBox = document.querySelector('.checkbox');
 const timerWrapper = document.querySelector('.time-buttons__wrapper');
 const buttonSave = document.querySelector('.button__save');
+const buttonDefault = document.querySelector('.button__default');
 
 export const checkboxTimer = document.getElementById('status-timer');
 
@@ -23,10 +24,11 @@ buttonSettings.addEventListener('click', openSettings);
 function openSettings() {
     pageStarting.classList.add('hide');
     pageSettings.classList.remove('hide');
-   
-    
     
 }
+buttonDefault.addEventListener('click', () => {
+    saves.default()
+})
 
 buttonSave.addEventListener('click', () => {
     saves.isVolume = volumeScale.value / 100;

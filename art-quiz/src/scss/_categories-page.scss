@@ -45,7 +45,6 @@ header {
     & .categoryImgWrap {
         width: calc(50% - 9px);
         & img {
-            filter: grayscale(100%);
             width: 100%;
             height: auto;
             border-radius: 20px;

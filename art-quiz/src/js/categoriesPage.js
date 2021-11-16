@@ -10,11 +10,13 @@ import images from "../images";
 import { pageStarting } from "./settingsPage";
 import { showStartingPage } from "./startingPage";
 import { hideStartingPage } from "./startingPage";
-import { createQuestionsAuthorPage, showQuestionAuthorPage } from "./questionsAuthorsPage";
+import { createQuestionsAuthorPage, createQuestionsPicturesPage, showQuestionAuthorPage } from "./questionsAuthorsPage";
 import { questionsAuthorPage } from "./questionsAuthorsPage";
 import { timer } from "./timerFunction";
 import { timerProgress } from "./questionsAuthorsPage";
 import { countTimer } from "./questionsAuthorsPage";
+import { saves } from "./saves";
+
 
 
 
@@ -32,10 +34,17 @@ export function createCategories(array) {
         nameCategory.classList.add('nameCategory');
         nameCategory.textContent = `${namesCategories[i]}`
         let scoreCategory = document.createElement('p');
-        array[i].score > 0 ? scoreCategory.textContent = `${array[i].score}/10` : scoreCategory.textContent = ''
+        
         scoreCategory.classList.add('scoreCategory');
         let img = document.createElement('img');
         img.classList.add('imgCategory')
+        if (array[i].score > 0) {
+            scoreCategory.textContent = `${array[i].score}/10`;
+            
+        } else {
+            scoreCategory.textContent = '';
+            img.classList.add('grey')
+        }
         img.src = `../images/img/${array[i].questions[0].question}.jpg`
         categoriesWrapper.append(div);
         div.append(divTitleWrap);
@@ -46,6 +55,8 @@ export function createCategories(array) {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsAuthorPage(array[i])
+            array[i].score = 0;
+            
          
         })
     }
@@ -62,10 +73,19 @@ export function createCategoriesPictures(array) {
         nameCategory.classList.add('nameCategory');
         nameCategory.textContent = `${namesCategories[i]}`
         let scoreCategory = document.createElement('p');
-        array[i].score > 0 ? scoreCategory.textContent = `${array[i].score}/10` : scoreCategory.textContent = ''
+       
+            
         scoreCategory.classList.add('scoreCategory');
         let img = document.createElement('img');
         img.classList.add('imgCategory')
+        if (array[i].score > 0) {
+            scoreCategory.textContent = `${array[i].score}/10`;
+            
+        } else {
+            scoreCategory.textContent = '';
+            img.classList.add('grey')
+        }
+        
         img.src = `../images/img/${array[i].questions[0].rightAnswer}.jpg`
         categoriesWrapper.append(div);
        
@@ -73,6 +93,14 @@ export function createCategoriesPictures(array) {
         divTitleWrap.append(nameCategory);
         divTitleWrap.append(scoreCategory);
         div.append(img);
+        div.addEventListener('click', function () {
+            showQuestionAuthorPage()
+            hideCategoriesPage()
+            createQuestionsPicturesPage(array[i])
+            array[i].score = 0;
+            
+         
+        })
         
     }
 }
@@ -85,6 +113,7 @@ export function hideCategoriesPage() {
 }
  let questions = [];
 export let category = [];
+
 export function initAuthorsQuestions() {
    questions = [];
     for(let i=0; i<120;i++) {
@@ -93,11 +122,12 @@ export function initAuthorsQuestions() {
    category = [];
     for (let i = 0; i < 12; i++) {
         category.push(new Category(i, questions));
+        category[i].score = saves.scoreCategories[i];
        
     }
     
     createCategories(category);
-  
+  console.log(category)
 }
 
 export function initPicturesQuestions() {
@@ -110,6 +140,7 @@ export function initPicturesQuestions() {
             categoryPictures.push(new Category(i, questions))
     }
     createCategoriesPictures(categoryPictures);
+    
    
     
 }

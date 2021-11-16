@@ -47,9 +47,9 @@
            <div class="time__wrapper">
             <p class="settings__text">Time game</p>
            <div class="time-switcher__wrapper ">
-                <p class="switcher-status">Off</p>
+                <p class="switcher-status">On</p>
                 <div class="custom-checkbox">
-                <input id="status-timer" class="checkbox" type="checkbox"  name="status-timer">
+                <input id="status-timer" class="checkbox" type="checkbox" checked name="status-timer">
                 <label for="status-timer">
                   <div class="status-switch"
                        data-unchecked="Off"
@@ -63,7 +63,7 @@
             <p class="settings__text">Time to answer</p>
             <div class="time-buttons__wrapper ">
              <button type="button" class="button__plus" onclick="this.nextElementSibling.stepDown()">–</button>
-             <input type="number" min="5" max="30" step="5" name="timer" value="0" class="timer__input">
+             <input type="number" min="5" max="30" step="5" name="timer" value="10" class="timer__input">
              <button type="button" class="button__minus" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
            </div>
@@ -126,7 +126,13 @@
                </div>
            </div>
            <div class="questions-authors__popupAnswer">
-               
+           </div>
+           <div class="questions-authors__popupResult">
+               <div class="popup-close"><span></span></div>
+               <div class="cup"></div>
+               <p class="result__congratulations">Congratulations!</p>
+               <p class="result__score">8/10</p>
+               <button class="button result__button">Продолжить</button>
            </div>
            <div class="timer-wrapper">
                <div class="questions-authors__close">

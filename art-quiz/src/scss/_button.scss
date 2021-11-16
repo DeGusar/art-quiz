@@ -13,6 +13,7 @@
     line-height: 28px;
     letter-spacing: -0.4px;
     background: transparent;
+    
    
 }
 .button-starting {
@@ -51,15 +52,7 @@
     border: 1px solid black 
 }
 
-.container .green__button {
-    background-color: #3DDA69;
-    color: white;
-    
-}
-.container .red__button {
-    background-color: #FF7E7E;
-    color: #fff
-}
+
 .popupAnswer__button {
     width: 296px;
     height: 48px;
@@ -67,6 +60,15 @@
     border: 1px solid black ;
     background-color: #FFBCA2;
     margin-top: 36px;
+}
+.result__button {
+    width: 296px;
+    height: 48px;
+    color: black;
+    border: 1px solid black ;
+    background-color: #FFBCA2;
+    margin-top: 36px;
+    margin-bottom: 25px;
 }
 
 @import "button-tablet";

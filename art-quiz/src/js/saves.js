@@ -7,7 +7,8 @@ export class Saves {
         this.isVolume = volumes;
         this.isTimer = isTimer;
         this.duration = duration;
-        this.scoreCategories = Array(12).fill(0)
+        this.scoreCategories = Array(12).fill(0);
+        this.scoreCategoriesPictureType = Array(12).fill(0)
 
     }
     save() {
@@ -22,6 +23,7 @@ export class Saves {
             saves.isTimer = settings.isTimer;
             saves.duration = settings.duration
             saves.scoreCategories = settings.scoreCategories;
+            saves.scoreCategoriesPictureType = settings.scoreCategoriesPictureType;
             volumeScale.value = saves.isVolume * 100;
             checkboxTimer.checked = !!saves.isTimer;
             timerInput.value = saves.duration

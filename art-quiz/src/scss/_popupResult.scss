@@ -1,4 +1,4 @@
-.questions-authors__popupResult {
+.questions-authors__popupResult, .questions-pictures__popupResult {
     background-color: white;
     border-radius: 15px;
     width: clamp(300px,300/320*100%,340px );
@@ -32,7 +32,7 @@ background-size: 147px 140px;
     text-align: center;
     letter-spacing: -0.5px;
 }
-.result__score {
+.result__score, .result__score_pictures {
     margin-top: 30px;
     font-style: normal;
     font-weight: bold;

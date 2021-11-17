@@ -61,7 +61,7 @@
     background-color: #FFBCA2;
     margin-top: 36px;
 }
-.result__button {
+.result__button, .result-Pictures__button {
     width: 296px;
     height: 48px;
     color: black;
@@ -70,6 +70,7 @@
     margin-top: 36px;
     margin-bottom: 25px;
 }
+
 
 @import "button-tablet";
 @import "./button-desktop";

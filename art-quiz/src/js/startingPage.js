@@ -11,7 +11,7 @@ import { initPicturesQuestions } from "./categoriesPage";
 
 
 export const buttonAuthors = document.querySelector('.button-artists')
-const buttonPictures = document.querySelector('.button-pictures')
+export const buttonPictures = document.querySelector('.button-pictures')
 
 export function showStartingPage() {
     pageStarting.classList.remove('hide');

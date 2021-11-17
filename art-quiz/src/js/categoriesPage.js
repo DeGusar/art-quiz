@@ -127,7 +127,7 @@ export function initAuthorsQuestions() {
     }
     
     createCategories(category);
-  console.log(category)
+ 
 }
 
 export function initPicturesQuestions() {
@@ -138,6 +138,7 @@ export function initPicturesQuestions() {
     let categoryPictures = [];
         for (let i = 0; i < 12; i++) {
             categoryPictures.push(new Category(i, questions))
+            categoryPictures[i].score = saves.scoreCategoriesPictureType[i];
     }
     createCategoriesPictures(categoryPictures);
     

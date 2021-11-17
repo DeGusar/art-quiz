@@ -31,6 +31,7 @@ import { volumeScale } from "./js/settingsPage"
 import { checkboxTimer } from "./js/settingsPage"
 import { timerInput } from "./js/settingsPage"
 import { buttonAuthors } from "./js/startingPage"
+import { buttonPictures } from "./js/startingPage"
 
 
 

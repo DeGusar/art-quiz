@@ -1,8 +1,9 @@
 export const categoriesWrapper = document.querySelector('.categories-images__wrapper');
 export const pageCategories = document.querySelector('.categories');
+export const scoreButton = document.querySelector('.nav__score');
 
 
-let namesCategories = ['Portrait', 'Landscape', 'Still life', 'Impressionism', 'Expressionism', 'Avant-garde', 'Renaissance', 'Surrealism', 'Kitsch', 'Minimalism', 'Interior', 'Nude']
+export  let namesCategories = ['Portrait', 'Landscape', 'Still life', 'Impressionism', 'Expressionism', 'Avant-garde', 'Renaissance', 'Surrealism', 'Kitsch', 'Minimalism', 'Interior', 'Nude']
 import { Question } from "./questionsAuthors";
 import { QuestionPictures } from "./questionsPictures";
 import { Category } from "./category";
@@ -16,8 +17,12 @@ import { timer } from "./timerFunction";
 import { timerProgress } from "./questionsAuthorsPage";
 import { countTimer } from "./questionsAuthorsPage";
 import { saves } from "./saves";
+import { createResultPage } from "./resultsPage";
+import { showResultPage } from "./resultsPage";
+import { createResultPagePictures } from "./resultsPage";
 
-
+let questions = [];
+export let category = [];
 
 
 
@@ -40,7 +45,6 @@ export function createCategories(array) {
         img.classList.add('imgCategory')
         if (array[i].score > 0) {
             scoreCategory.textContent = `${array[i].score}/10`;
-            
         } else {
             scoreCategory.textContent = '';
             img.classList.add('grey')
@@ -51,13 +55,17 @@ export function createCategories(array) {
         divTitleWrap.append(nameCategory);
         divTitleWrap.append(scoreCategory);
         div.append(img);
+                                    scoreButton.addEventListener('click', () => {
+                                        hideCategoriesPage()
+                                        showResultPage()
+                                        createResultPage(array[i])
+
+                                    })
         div.addEventListener('click', function () {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsAuthorPage(array[i])
             array[i].score = 0;
-            
-         
         })
     }
 }
@@ -66,21 +74,17 @@ export function createCategoriesPictures(array) {
     for (let i = 0; i < array.length; i++) {
         let div = document.createElement('div');
         div.classList.add('categoryImgWrap');
-        
         let divTitleWrap = document.createElement('div');
         divTitleWrap.classList.add('categoryTitleWrap');
         let nameCategory = document.createElement('p');
         nameCategory.classList.add('nameCategory');
         nameCategory.textContent = `${namesCategories[i]}`
         let scoreCategory = document.createElement('p');
-       
-            
         scoreCategory.classList.add('scoreCategory');
         let img = document.createElement('img');
         img.classList.add('imgCategory')
         if (array[i].score > 0) {
             scoreCategory.textContent = `${array[i].score}/10`;
-            
         } else {
             scoreCategory.textContent = '';
             img.classList.add('grey')
@@ -88,7 +92,6 @@ export function createCategoriesPictures(array) {
         
         img.src = `../images/img/${array[i].questions[0].rightAnswer}.jpg`
         categoriesWrapper.append(div);
-       
         div.append(divTitleWrap);
         divTitleWrap.append(nameCategory);
         divTitleWrap.append(scoreCategory);
@@ -98,10 +101,7 @@ export function createCategoriesPictures(array) {
             hideCategoriesPage()
             createQuestionsPicturesPage(array[i])
             array[i].score = 0;
-            
-         
         })
-        
     }
 }
 
@@ -111,8 +111,6 @@ export function showCategoriesPage() {
 export function hideCategoriesPage() {
     pageCategories.classList.add('hide');
 }
- let questions = [];
-export let category = [];
 
 export function initAuthorsQuestions() {
    questions = [];
@@ -123,11 +121,8 @@ export function initAuthorsQuestions() {
     for (let i = 0; i < 12; i++) {
         category.push(new Category(i, questions));
         category[i].score = saves.scoreCategories[i];
-       
     }
-    
     createCategories(category);
- 
 }
 
 export function initPicturesQuestions() {
@@ -141,16 +136,12 @@ export function initPicturesQuestions() {
             categoryPictures[i].score = saves.scoreCategoriesPictureType[i];
     }
     createCategoriesPictures(categoryPictures);
-    
-   
-    
 }
 
 pageCategories.addEventListener('click', (e) => {
     if (e.target.closest('.nav__home')){
-            pageStarting.classList.remove('hide');
+        pageStarting.classList.remove('hide');
         hideCategoriesPage();
         showStartingPage()
     }
-   
 })

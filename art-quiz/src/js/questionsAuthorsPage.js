@@ -7,6 +7,7 @@ import { saves } from "./saves";
 import { buttonAuthors } from "./startingPage";
 import { buttonPictures } from "./startingPage";
 
+
 export const timerProgress = document.querySelector('.timer__progress');
 export const countTimer = document.querySelector('.time__count');
 export const questionsAuthorPage = document.querySelector('.questions-authors');
@@ -52,7 +53,6 @@ function hidePopupClose() {
 questionsAuthorPage.addEventListener('click', (e) => {
     if (e.target.closest('.questions-authors__close')) {
         showPopupClose();
-        
     }
     if (e.target.closest('.popup-close') || e.target.closest('.popup-button-cancel')) {
         hidePopupClose()
@@ -70,7 +70,6 @@ questionsAuthorPage.addEventListener('click', (e) => {
         showCategoriesPage();
         let newClick = new Event('click');
         buttonAuthors.dispatchEvent(newClick);
-        
     }
     if (e.target.closest('.result-Pictures__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
@@ -78,10 +77,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
         showCategoriesPage();
         let newClick = new Event('click');
         buttonPictures.dispatchEvent(newClick);
-        
     }
-    
-    
 })
 
 export function hideQuestionAuthorPage() {
@@ -94,19 +90,20 @@ export function showQuestionAuthorPage() {
 
 
 export function createQuestionsAuthorPage(array) {
-    let canceltTimer = timer(timerProgress, saves.duration, countTimer);
-   
-    timerProgress.addEventListener('change', () => {
-            if (timerProgress.value == 0 ) {
+        let canceltTimer = timer(timerProgress, saves.duration, countTimer);
+        timerProgress.addEventListener('change', () => {
+            if (timerProgress.value == 0) {
                 playSoundWrong();
-                renderPopupAnswer(array,0,0)
+                renderPopupAnswer(array, 0, 0)
             }
-    });
-    function closePage() {
-        canceltTimer();
-        closeQuestionsAuthorPage.removeEventListener('click', closePage)
-    }
-    closeQuestionsAuthorPage.addEventListener('click', closePage);
+        });
+        function closePage() {
+            canceltTimer();
+            closeQuestionsAuthorPage.removeEventListener('click', closePage)
+        }
+    if (saves.isTimer) {
+        closeQuestionsAuthorPage.addEventListener('click', closePage);
+        }
     questionsAuthorsContainer.innerHTML = '';
     let div = document.createElement('div');
     div.classList.add('question-buttons__wrapper');
@@ -115,50 +112,42 @@ export function createQuestionsAuthorPage(array) {
     img.src = `../images/img/${array.questions[array.current].question}.jpg`
     questionsAuthorsContainer.append(img);
     questionsAuthorsContainer.append(div);
-     
     let buttonsWrapper = document.createElement('div');
     buttonsWrapper.classList.add('question-buttons__wrapper');
     questionsAuthorsContainer.append(buttonsWrapper);
-    
     array.questions[array.current].answers.forEach((item, index) => {
-       
         let button = document.createElement('button');
         button.classList.add('button-answer');
         button.classList.add('button');
         button.textContent = `${array.questions[array.current].answers[index]}`
         buttonsWrapper.append(button);
-       
         button.addEventListener('click', () => {
-          
-            canceltTimer();
+            if (saves.isTimer) {
+                canceltTimer();
+            }
             if (array.questions[array.current].checkAnswer(index)) {
                 button.classList.add('green__button');
-                console.log(array.questions[array.current].checkAnswer(index))
                 playSoundRight()
-                renderPopupAnswer(array, 1, index)
+                renderPopupAnswer(array, 1, index);
+                saves.questionsAuthorsСorrectness[array.questions[array.current].questionIndex] = 1;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
-
             } else {
-                console.log(array.questions[array.current].checkAnswer(index))
                 button.classList.add('red__button');
                 playSoundWrong()
                 renderPopupAnswer(array, 0, index)
+                saves.questionsAuthorsСorrectness[array.questions[array.current].questionIndex] = 0;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
             }
         })
     })
-
-    
 }
 
 export function renderPopupAnswer(array, isCorrect, index) {
-   
     questionsAuthorsPopupAnswerContainer.innerHTML = "";
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
     img.src = `../images/full/${array.questions[array.current].question}full.jpg`
-       
     let span = document.createElement('span');
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {
@@ -190,8 +179,6 @@ export function renderPopupAnswer(array, isCorrect, index) {
             array.scoreCount(index);
             hidePopupAnswer()
             createQuestionsAuthorPage(array)
-           
-        
         } else {
             array.scoreCount(index);
             resultScore.textContent = `${array.score}/10`
@@ -200,10 +187,7 @@ export function renderPopupAnswer(array, isCorrect, index) {
             array.current = 0;
             hidePopupAnswer()
             showPopupResult()
-           
         }
-        
-        
     })
     showPopupAnswer()
 }
@@ -213,59 +197,55 @@ export function createQuestionsPicturesPage(array) {
     let canceltTimer = timer(timerProgress, saves.duration, countTimer);
    
     timerProgress.addEventListener('change', () => {
-            if (timerProgress.value == 0 ) {
+            if (timerProgress.value == 0) {
                 playSoundWrong();
-                renderPopupAnswerPictures(array,0,0)
+                renderPopupAnswerPictures(array, 0, 0)
             }
-    });
+        });
     function closePage() {
         canceltTimer();
         closeQuestionsAuthorPage.removeEventListener('click', closePage)
     }
+    if (saves.isTimer) {
+        closeQuestionsAuthorPage.addEventListener('click', closePage);
+    }
     questionText.textContent = `${array.questions[array.current].question}`
-    closeQuestionsAuthorPage.addEventListener('click', closePage);
     questionsAuthorsContainer.innerHTML = '';
     let div = document.createElement('div');
     div.classList.add('wrap__images');
     questionsAuthorsContainer.append(div);
-    
     array.questions[array.current].answers.forEach((item,index) => {
-       
         let img = document.createElement('img');
         img.classList.add('img__picture-questions');
         img.src = `../images/img/${item}.jpg`
         div.append(img);
-       
-       
         img.addEventListener('click', () => {
-          
-            canceltTimer();
+            if (saves.isTimer) {
+                canceltTimer();
+            }
             if (array.questions[array.current].checkAnswer(index)) {
                 img.classList.add('green__border');
                 playSoundRight()
                 renderPopupAnswerPictures(array, 1, index)
+                saves.questionsPicturesСorrectness[array.questions[array.current].questionIndex-120] = 1;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
-
             } else {
                 img.classList.add('red__border');
                 playSoundWrong()
                 renderPopupAnswerPictures(array, 0, index)
+                saves.questionsPicturesСorrectness[array.questions[array.current].questionIndex-120] = 0;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
             }
         })
     })
-
-    
 }
 
 export function renderPopupAnswerPictures(array, isCorrect, index) {
-   
     questionsAuthorsPopupAnswerContainer.innerHTML = "";
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
     img.src = `../images/full/${array.questions[array.current].rightAnswer}full.jpg`
-       
     let span = document.createElement('span');
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {
@@ -297,8 +277,6 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
             array.scoreCount(index);
             hidePopupAnswer()
             createQuestionsPicturesPage(array)
-           
-        
         } else {
             array.scoreCount(index);
             resultScorePictures.textContent = `${array.score}/10`
@@ -307,10 +285,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
             array.current = 0;
             hidePopupAnswer()
             showPopupResultPictures()
-           
         }
-        
-        
     })
     showPopupAnswer()
 }

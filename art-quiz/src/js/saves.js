@@ -8,29 +8,31 @@ export class Saves {
         this.isTimer = isTimer;
         this.duration = duration;
         this.scoreCategories = Array(12).fill(0);
-        this.scoreCategoriesPictureType = Array(12).fill(0)
-
+        this.scoreCategoriesPictureType = Array(12).fill(0);
+        this.questionsAuthorsСorrectness = Array(120).fill(0);
+        this.questionsPicturesСorrectness = Array(120).fill(0);
     }
     save() {
         localStorage.setItem('settings0164', JSON.stringify(this));
+        console.log(this)
     }
     load() {
         if (localStorage.getItem('settings0164')) {
             let recievedSettings = localStorage.getItem('settings0164');
             let settings = JSON.parse(recievedSettings);
-            
             saves.isVolume = settings.isVolume;
             saves.isTimer = settings.isTimer;
             saves.duration = settings.duration
             saves.scoreCategories = settings.scoreCategories;
             saves.scoreCategoriesPictureType = settings.scoreCategoriesPictureType;
+            saves.questionsAuthorsСorrectness = settings.questionsAuthorsСorrectness;
+            saves.questionsPicturesСorrectness = settings.questionsPicturesСorrectness;
             volumeScale.value = saves.isVolume * 100;
             checkboxTimer.checked = !!saves.isTimer;
             timerInput.value = saves.duration
             let event = new Event('change');
             volumeScale.dispatchEvent(event);
             checkboxTimer.dispatchEvent(event);
-            
         }
     }
     default() {
@@ -41,7 +43,7 @@ export class Saves {
         saves.load()
     }
 }
-export let saves = new Saves(0.5, 1, 10,);
+export let saves = new Saves(0.5, 1, 10);
 window.addEventListener('load', saves.load);
 
 

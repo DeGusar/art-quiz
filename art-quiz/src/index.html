@@ -7,11 +7,11 @@
     <title>Art-quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./fonts/fonts.css">
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favIcon.png" type="image/x-icon">
    </head>
 <body>
    <div class="container">
-       <div class="starting ">
+       <div class="starting">
            <div class="button-settings"></div>
            <div class="starting__content">
                 <div class="starting__logo ">
@@ -88,8 +88,8 @@
             </div>
             <div class="header__nav">
                 <p>Home</p>
-                <p><span class="orange">Categories</span></p>
-                <p>Score</p>
+                <p>Categories</p>
+               
             </div>
              </header>
            <div class="categories__title">Categories</div>
@@ -158,6 +158,40 @@
             <p>2021</p>
            </footer>
        </div>
+       <div class="results hide">
+        <header>
+         <div class="starting__logo categories__logo">
+             <p><span>Art</span> Quiz</p>
+             <span class="circle left"></span>
+             <span class="circle right"></span>
+         </div>
+         <div class="header__nav">
+             <p>Home</p>
+             <p>Categories</p>
+         </div>
+          </header>
+        <div class="categories__title">Results</div>
+        <div class="results-images__wrapper"></div>
+        <nav class="categories__nav">
+            <div class="nav__home">
+             <div class="nav__home-logo"></div>
+             <p>Home</p>
+            </div>
+            <div class="nav__categories">
+             <div class="nav__categories-logo"></div>
+             <p><span class="orange">Categories</span></p>
+            </div>
+            <div class="nav__score">
+             <div class="nav__score-logo"></div>
+             <p>Score</p>
+            </div>
+        </nav>
+         <footer class="footer footer__categories">
+         <a href="https://github.com/DeGusar" target="blank" class="github-logo"></a>
+         <a href="https://rs.school/js/" target="blank" class="rss-logo"></a>   
+         <p>2021</p>
+        </footer>
+        </div>
        <audio src="./sounds/right.mp3" class="audio audioRight"></audio>
        <audio src="./sounds/wrong.mp3" class="audio audioWrong"></audio>
    </div>

@@ -1,7 +1,10 @@
 import { renderPopupAnswer } from "./questionsAuthorsPage";
+import { saves } from "./saves";
 export function timer(element, time, textBlock) {
-    
-    let start = 100
+    if (!saves.isTimer) {
+        return 
+    } else {
+        let start = 100
     let interval =100/time;
     let intervalId = setInterval(() => {
         if (start < 0 ) {
@@ -21,4 +24,6 @@ export function timer(element, time, textBlock) {
     return () => {
         clearInterval(intervalId)
     };
+    }
+    
 }

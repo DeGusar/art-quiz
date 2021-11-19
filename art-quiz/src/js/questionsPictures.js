@@ -14,6 +14,7 @@ function getRandomPicture(min, max, dontRepeat) {
 export class QuestionPictures {
     constructor(index) {
         this.question = `Какую картину написал ${images[index].author}?`;
+        this.questionIndex = index;
         this.rightAnswer = +images[index].imageNum;
         this.firstWrong = getRandomPicture(0, images.length - 1, [this.rightAnswer])
         this.secondWrong = getRandomPicture(0, images.length - 1, [this.rightAnswer, this.firstWrong]);

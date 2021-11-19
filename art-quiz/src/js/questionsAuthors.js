@@ -19,7 +19,8 @@ export function shuffle(array) {
 }
 export class Question {
     constructor(index) {
-        this.question =images[index].imageNum;
+        this.question = images[index].imageNum;
+        this.questionIndex = index;
         this.rightAnswer = images[this.question].author;
         this.firstWrong = getRandom(0, authorArray.length - 1,[this.rightAnswer]);
         this.secondWrong = getRandom(0, authorArray.length - 1, [this.rightAnswer, this.firstWrong]);

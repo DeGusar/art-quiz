@@ -8,6 +8,7 @@ import { showCategoriesPage } from "./categoriesPage";
 import { pageStarting } from "./settingsPage";
 import { initAuthorsQuestions } from "./categoriesPage";
 import { initPicturesQuestions } from "./categoriesPage";
+import { saves } from "./saves";
 
 
 export const buttonAuthors = document.querySelector('.button-artists')
@@ -24,7 +25,7 @@ buttonAuthors.addEventListener('click', () => {
     showCategoriesPage();
     hideStartingPage()
     initAuthorsQuestions()
-    
+    console.log(saves);
 })
 buttonPictures.addEventListener('click', () => {
     showCategoriesPage();

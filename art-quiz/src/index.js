@@ -32,6 +32,10 @@ import { checkboxTimer } from "./js/settingsPage"
 import { timerInput } from "./js/settingsPage"
 import { buttonAuthors } from "./js/startingPage"
 import { buttonPictures } from "./js/startingPage"
+import { namesCategories } from "./js/categoriesPage"
+import { createResultPage } from "./js/resultsPage"
+import { showResultPage } from "./js/resultsPage"
+import { createResultPagePictures } from "./js/resultsPage"
 
 
 

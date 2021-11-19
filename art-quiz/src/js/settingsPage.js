@@ -1,4 +1,6 @@
 import { saves } from "./saves";
+import { timerProgress } from "./questionsAuthorsPage";
+import { countTimer } from "./questionsAuthorsPage";
 
 const buttonSettings = document.querySelector('.button-settings');
 export const pageStarting = document.querySelector('.starting');
@@ -40,10 +42,19 @@ buttonSave.addEventListener('click', () => {
 
 checkBox.addEventListener('change', () => {
     if (!checkBox.checked) {
-        timerWrapper.classList.add('unclickable')
-        timerInput.value = 0;
+        timerWrapper.classList.add('unclickable');
+        timerWrapper.classList.add('unactive');
+
+        timerProgress.classList.add('hide');
+        countTimer.classList.add('hide');
+        
+
     } else {
+        timerInput.value = saves.duration;
         timerWrapper.classList.remove('unclickable')
+        timerWrapper.classList.remove('unactive')
+        timerProgress.classList.remove('hide');
+        countTimer.classList.remove('hide');
  } 
 })
 

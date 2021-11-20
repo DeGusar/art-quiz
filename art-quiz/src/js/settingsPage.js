@@ -16,17 +16,22 @@ const checkBox = document.querySelector('.checkbox');
 const timerWrapper = document.querySelector('.time-buttons__wrapper');
 const buttonSave = document.querySelector('.button__save');
 const buttonDefault = document.querySelector('.button__default');
+ let sourceSettings = 0;
 
 export const checkboxTimer = document.getElementById('status-timer');
 
 
+ export function showSettingsPage() {
+    pageSettings.classList.remove('hide');
+}
 
+function hideSettingsPage() {
+    pageSettings.classList.add('hide');
+}
 
 buttonSettings.addEventListener('click', openSettings);
 function openSettings() {
-    pageStarting.classList.add('hide');
-    pageSettings.classList.remove('hide');
-    
+    showSettingsPage()
 }
 buttonDefault.addEventListener('click', () => {
     saves.default()
@@ -60,8 +65,7 @@ checkBox.addEventListener('change', () => {
 
 buttonBack.addEventListener('click', closeSettings);
 function closeSettings() {
-    pageStarting.classList.remove('hide');
-    pageSettings.classList.add('hide');
+    hideSettingsPage();
 }
 
 function audioChangeVolume() {

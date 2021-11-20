@@ -1,6 +1,9 @@
 .unclickable {
     pointer-events: none;
 }
+.unclickable__overlay {
+    pointer-events: none;
+}
 .container .hide {
     display: none;
    
@@ -38,4 +41,13 @@
 }
 .invisible {
     opacity: 0;
+}
+body {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@media (min-width:1440px) {
+    .unclickable__overlay {
+        pointer-events: all;
+    }
 }

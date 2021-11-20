@@ -5,11 +5,19 @@
     .footer {
         display: flex;
     }
+    .results .categories__title {
+        padding-top: 20px;
+    }
     .results-images__wrapper {
-        margin-bottom: 0;
+        margin-bottom: 82px;
         row-gap: 50px;
         & .resultsImgWrap {
-            width: calc(100%/6 - 125px/6) ;
+            width: calc(100%/5 - 90px/6) ;
         }
     }
+    .results .header__nav {
+        column-gap: 20px;
+    }
+    
+   
 }

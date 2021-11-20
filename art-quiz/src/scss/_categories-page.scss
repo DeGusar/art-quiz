@@ -12,6 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 16px;
 }
 .categories__logo {
     margin-top: 22px;
@@ -20,6 +21,7 @@ header {
     }
 }
 .categories__title {
+    padding-left: 16px;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -44,6 +46,7 @@ header {
     row-gap: 20px;
     & .categoryImgWrap {
         width: calc(50% - 9px);
+        position: relative;
         & img {
             width: 100%;
             height: auto;
@@ -105,6 +108,7 @@ header {
     justify-content: center;
     cursor: pointer;
     & p {
+        height: 100%;
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -131,15 +135,86 @@ header {
 .nav__score-logo {
     width: 22px;
     height: 22px;
-    background: url("./images/score.svg");
+    background: url("./images/settings.svg");
     background-size: 100% 100%;
     background-position: center;
+    filter: invert(100%) sepia(82%) saturate(2%) hue-rotate(89deg) brightness(110%) contrast(100%);
 }
 .orange {
     color: #FFBCA2
 }
 .header__nav {
     display: none;
+    cursor: pointer;
+}
+.header-nav__icon {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url("./images/home__nav.svg");
+    background-size: 100% 100%;
+    background-position: center;
+    filter: invert(100%) sepia(82%) saturate(2%) hue-rotate(89deg) brightness(110%) contrast(100%);
+}
+.category__overlay {
+   
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+    
+    .overlay__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+        transform: translateY(100%);
+        transition: all 1s ;
+        & p {
+            color: white;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 50px;
+        }
+        & span {
+            display: block;
+            width: 50px;
+            height: 40px;
+            background: url("./images/scoreIcon.svg");
+            filter: invert(100%) sepia(82%) saturate(2%) hue-rotate(89deg) brightness(110%) contrast(100%);
+            background-position: center;
+            background-size: 100% 100%;
+    
+        }
+    }
+   
+
+   
+
+}
+.category__overlay .overlay__wrapper_active {
+    transform: translateY(0%);
+    transition: transform 1s ;
+    
+}
+.overlay__active {
+    z-index: 10;
+    height: 20%;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(8px); 
+    transition: opacity 1s ;
+    
+    
+    
 }
 
 @import "categories-page-tablet";

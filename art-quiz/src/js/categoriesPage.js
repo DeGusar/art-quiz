@@ -3,6 +3,8 @@ export const pageCategories = document.querySelector('.categories');
 export const scoreButton = document.querySelector('.nav__score');
 
 
+
+
 export  let namesCategories = ['Portrait', 'Landscape', 'Still life', 'Impressionism', 'Expressionism', 'Avant-garde', 'Renaissance', 'Surrealism', 'Kitsch', 'Minimalism', 'Interior', 'Nude']
 import { Question } from "./questionsAuthors";
 import { QuestionPictures } from "./questionsPictures";
@@ -20,6 +22,8 @@ import { saves } from "./saves";
 import { createResultPage } from "./resultsPage";
 import { showResultPage } from "./resultsPage";
 import { createResultPagePictures } from "./resultsPage";
+import { showSettingsPage } from "./settingsPage";
+
 
 let questions = [];
 export let category = [];
@@ -32,7 +36,19 @@ export function createCategories(array) {
     for (let i = 0; i < array.length; i++) {
        
         let div = document.createElement('div');
+        let divOverlay = document.createElement('div');
+        let spanOverlay = document.createElement('span');
+        let textOverlay = document.createElement('p');
+        let overlayWrap = document.createElement('div');
+        overlayWrap.append(spanOverlay);
+        overlayWrap.append(textOverlay);
+        divOverlay.append(overlayWrap);
+        textOverlay.textContent = "Score"
+
         div.classList.add('categoryImgWrap');
+        overlayWrap.classList.add('overlay__wrapper');
+        divOverlay.classList.add('category__overlay');
+
         let divTitleWrap = document.createElement('div');
         divTitleWrap.classList.add('categoryTitleWrap');
         let nameCategory = document.createElement('p');
@@ -43,8 +59,34 @@ export function createCategories(array) {
         scoreCategory.classList.add('scoreCategory');
         let img = document.createElement('img');
         img.classList.add('imgCategory')
+        
         if (array[i].score > 0) {
             scoreCategory.textContent = `${array[i].score}/10`;
+            div.append(divOverlay);
+            img.classList.add("unclickable__overlay");
+            overlayWrap.addEventListener('click', () => {
+                hideCategoriesPage()
+                showResultPage()
+                createResultPage(array[i])
+            })
+           
+            div.addEventListener('mouseleave', () => {
+                divOverlay.classList.remove("overlay__active")
+                overlayWrap.classList.remove("overlay__wrapper_active");
+                img.classList.add("unclickable__overlay");
+                
+            })
+                divOverlay.addEventListener('click', () => {
+                divOverlay.classList.add("overlay__active")
+                    overlayWrap.classList.add("overlay__wrapper_active");
+                   
+                img.classList.remove("unclickable__overlay");
+                overlayWrap.addEventListener('click', () => {
+                    hideCategoriesPage()
+                    showResultPage()
+                    createResultPage(array[i])
+                })
+                })
         } else {
             scoreCategory.textContent = '';
             img.classList.add('grey')
@@ -52,16 +94,11 @@ export function createCategories(array) {
         img.src = `../images/img/${array[i].questions[0].question}.jpg`
         categoriesWrapper.append(div);
         div.append(divTitleWrap);
+       
         divTitleWrap.append(nameCategory);
         divTitleWrap.append(scoreCategory);
         div.append(img);
-                                    scoreButton.addEventListener('click', () => {
-                                        hideCategoriesPage()
-                                        showResultPage()
-                                        createResultPage(array[i])
-
-                                    })
-        div.addEventListener('click', function () {
+        img.addEventListener('click', function () {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsAuthorPage(array[i])
@@ -74,6 +111,18 @@ export function createCategoriesPictures(array) {
     for (let i = 0; i < array.length; i++) {
         let div = document.createElement('div');
         div.classList.add('categoryImgWrap');
+
+        let divOverlay = document.createElement('div');
+        let spanOverlay = document.createElement('span');
+        let textOverlay = document.createElement('p');
+        let overlayWrap = document.createElement('div');
+        overlayWrap.append(spanOverlay);
+        overlayWrap.append(textOverlay);
+        divOverlay.append(overlayWrap);
+        textOverlay.textContent = "Score"
+        overlayWrap.classList.add('overlay__wrapper');
+        divOverlay.classList.add('category__overlay');
+
         let divTitleWrap = document.createElement('div');
         divTitleWrap.classList.add('categoryTitleWrap');
         let nameCategory = document.createElement('p');
@@ -85,6 +134,33 @@ export function createCategoriesPictures(array) {
         img.classList.add('imgCategory')
         if (array[i].score > 0) {
             scoreCategory.textContent = `${array[i].score}/10`;
+
+            div.append(divOverlay);
+            img.classList.add("unclickable__overlay");
+            overlayWrap.addEventListener('click', () => {
+                hideCategoriesPage()
+                showResultPage()
+                createResultPagePictures(array[i])
+            })
+          
+            div.addEventListener('mouseleave', () => {
+                divOverlay.classList.remove("overlay__active")
+                overlayWrap.classList.remove("overlay__wrapper_active");
+                img.classList.add("unclickable__overlay");
+                
+            })
+                divOverlay.addEventListener('click', () => {
+                divOverlay.classList.add("overlay__active")
+                overlayWrap.classList.add("overlay__wrapper_active");
+                img.classList.remove("unclickable__overlay");
+
+                    overlayWrap.addEventListener('click', () => {
+                    hideCategoriesPage()
+                    showResultPage()
+                    createResultPagePictures(array[i])
+                })
+                })
+            
         } else {
             scoreCategory.textContent = '';
             img.classList.add('grey')
@@ -96,7 +172,7 @@ export function createCategoriesPictures(array) {
         divTitleWrap.append(nameCategory);
         divTitleWrap.append(scoreCategory);
         div.append(img);
-        div.addEventListener('click', function () {
+        img.addEventListener('click', function () {
             showQuestionAuthorPage()
             hideCategoriesPage()
             createQuestionsPicturesPage(array[i])
@@ -144,4 +220,16 @@ pageCategories.addEventListener('click', (e) => {
         hideCategoriesPage();
         showStartingPage()
     }
+    if (e.target.closest('.header__nav')) {
+        pageStarting.classList.remove('hide');
+        hideCategoriesPage();
+        showStartingPage()
+    }
+    if (e.target.closest('.nav__score')) {
+        /* hideCategoriesPage(); */
+        showSettingsPage();
+       
+    }
+    
+    
 })

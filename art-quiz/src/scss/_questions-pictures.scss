@@ -4,8 +4,13 @@
     flex-wrap: wrap;
     column-gap: 18px;
     row-gap: 14px;
+    justify-content: center;
     & img {
         width: calc(50% - 9px);
         border-radius: 15px;
     }
 }
+
+
+@import "./questions-pictures-tablet";
+@import "./questions-pictures-desktop";

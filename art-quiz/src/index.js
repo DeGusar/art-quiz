@@ -36,6 +36,8 @@ import { namesCategories } from "./js/categoriesPage"
 import { createResultPage } from "./js/resultsPage"
 import { showResultPage } from "./js/resultsPage"
 import { createResultPagePictures } from "./js/resultsPage"
+import { showSettingsPage } from "./js/settingsPage"
+import { playSoundResult } from "./js/audio"
 
 
 

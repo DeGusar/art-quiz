@@ -5,11 +5,14 @@
     .footer {
         display: flex;
     }
+    
     .categories-images__wrapper {
-        margin-bottom: 0;
+        margin-bottom: 82px;
         row-gap: 50px;
         & .categoryImgWrap {
             width: calc(100%/6 - 125px/6) ;
         }
     }
+    
 }
+

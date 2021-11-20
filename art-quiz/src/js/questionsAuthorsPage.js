@@ -6,6 +6,7 @@ import { playSoundRight, playSoundWrong } from "./audio";
 import { saves } from "./saves";
 import { buttonAuthors } from "./startingPage";
 import { buttonPictures } from "./startingPage";
+import { playSoundResult } from "./audio";
 
 
 export const timerProgress = document.querySelector('.timer__progress');
@@ -66,6 +67,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
     }
     if (e.target.closest('.result__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        hideQuestionAuthorPage();
         hidePopupResult()
         showCategoriesPage();
         let newClick = new Event('click');
@@ -73,6 +75,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
     }
     if (e.target.closest('.result-Pictures__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        hideQuestionAuthorPage();
         hidePopupResultPictures()
         showCategoriesPage();
         let newClick = new Event('click');
@@ -109,7 +112,7 @@ export function createQuestionsAuthorPage(array) {
     div.classList.add('question-buttons__wrapper');
     let img = document.createElement('img');
     img.classList.add('question__img');
-    img.src = `../images/img/${array.questions[array.current].question}.jpg`
+    img.src = `../images/full/${array.questions[array.current].question}full.jpg`
     questionsAuthorsContainer.append(img);
     questionsAuthorsContainer.append(div);
     let buttonsWrapper = document.createElement('div');
@@ -149,6 +152,13 @@ export function renderPopupAnswer(array, isCorrect, index) {
     let img = document.createElement('img');
     img.src = `../images/full/${array.questions[array.current].question}full.jpg`
     let span = document.createElement('span');
+
+    let link_url = document.createElement("a");
+    link_url.classList.add('download');
+    link_url.download = img.src.substring((img.src.lastIndexOf("/") + 1), img.src.length);
+    link_url.href = img.src;
+    div.append(link_url);
+
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {
         span.classList.add('popupAnswer__marker-right');
@@ -187,6 +197,7 @@ export function renderPopupAnswer(array, isCorrect, index) {
             array.current = 0;
             hidePopupAnswer()
             showPopupResult()
+            playSoundResult()
         }
     })
     showPopupAnswer()
@@ -253,6 +264,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
     } else {
         span.classList.add('popupAnswer__marker-wrong');
     }
+    
     let pName = document.createElement('p');
     pName.classList.add('popupAnswer__name');
     pName.textContent = `${array.questions[array.current].name}`;
@@ -283,8 +295,14 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
             saves.scoreCategoriesPictureType[array.category] = array.score;
             saves.save()
             array.current = 0;
+            playSoundResult()
             hidePopupAnswer()
             showPopupResultPictures()
+
+            
+            
+
+
         }
     })
     showPopupAnswer()

@@ -6,8 +6,12 @@
     .header__nav {
         display: flex;
         align-items: center;
-        column-gap: 40px;
+        column-gap: 20px;
+        justify-content: center;
         & p {
+          position: relative;
+          top: 3px;
+           
             font-family: Gilroy;
             font-style: normal;
             font-weight: 500;

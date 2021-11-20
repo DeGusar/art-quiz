@@ -1,5 +1,9 @@
 import { namesCategories } from "./categoriesPage";
 import { saves } from "./saves";
+import { showStartingPage } from "./startingPage";
+import { showCategoriesPage } from "./categoriesPage";
+import { showSettingsPage } from "./settingsPage";
+
 
 const resultsWrapper = document.querySelector('.results-images__wrapper');
 const resultsPage = document.querySelector('.results');
@@ -7,6 +11,30 @@ const resultsPage = document.querySelector('.results');
 export function showResultPage() {
     resultsPage.classList.remove('hide');
 }
+
+function hideResultsPage() {
+       resultsPage.classList.add('hide');
+}
+
+
+resultsPage.addEventListener('click', (e) => {
+    if (e.target.closest('.results__home') || e.target.closest('.nav__home')) {
+        hideResultsPage();
+        showStartingPage(); 
+    }
+    if (e.target.closest('.results__categories') || e.target.closest('.nav__categories')) {
+        hideResultsPage();
+        showCategoriesPage();
+    }
+    if (e.target.closest('.results__settings')) {
+        showSettingsPage()
+    }
+})
+
+
+	
+	
+    
 
 export function createResultPage(array) {
     resultsWrapper.innerHTML = '';
@@ -40,16 +68,20 @@ export function createResultPage(array) {
 
             img.classList.add('resultCard')
             imgInv.classList.add('invisible')
-            console.log(array.score);
+           
         if (saves.questionsAuthorsСorrectness[array.category*10+i] == 0) {
             img.classList.add('grey')
         }
-        img.src = `../images/img/${array.questions[i].question}.jpg`
+            img.src = `../images/img/${array.questions[i].question}.jpg`
+            
+            
+
         imgInv.src = `../images/img/${array.questions[i].question}.jpg`
             div.append(divTitleWrap);
             div.append(fliper);
             fliper.append(front);
             fliper.append(back);
+            
             back.append(pName);
             back.append(pAuthor);
             back.append(pYear);
@@ -60,7 +92,13 @@ export function createResultPage(array) {
         
             div.addEventListener('touchstart', () => {
                 div.classList.toggle("hover");
-        })
+            })
+            div.addEventListener('mouseenter', () => {
+                div.classList.add("hover");
+            })
+            div.addEventListener('mouseleave', () => {
+                div.classList.remove("hover");
+            })
         
         
     }
@@ -68,7 +106,8 @@ export function createResultPage(array) {
 
 export function createResultPagePictures(array) {
     resultsWrapper.innerHTML = '';
-        for (let i = 0; i < array.questions.length; i++) {
+    for (let i = 0; i < array.questions.length; i++) {
+        console.log(array.questions[i].rightAnswer)
             let div = document.createElement('div');
             let fliper = document.createElement('div');
             let back = document.createElement('div');
@@ -100,8 +139,9 @@ export function createResultPagePictures(array) {
         if (saves.questionsPicturesСorrectness[(array.category)*10+i] == 0) {
             img.classList.add('grey')
         }
-            img.src = `../images/img/${array.questions[i].question}.jpg`
-            imgInv.src = `../images/img/${array.questions[i].question}.jpg`
+            img.src = `../images/img/${array.questions[i].rightAnswer}.jpg`
+            imgInv.src = `../images/img/${array.questions[i].rightAnswer}.jpg`
+            
         div.append(divTitleWrap);
             div.append(fliper);
             fliper.append(front);
@@ -114,6 +154,12 @@ export function createResultPagePictures(array) {
             front.append(img);
             div.addEventListener('touchstart', () => {
                 div.classList.toggle("hover");
+            })
+            div.addEventListener('mouseenter', () => {
+                div.classList.add("hover");
+            })
+            div.addEventListener('mouseleave', () => {
+                div.classList.remove("hover");
             })
     }
 }

@@ -1,4 +1,4 @@
-const { default: images } = require("../images");
+import { images } from "../imagesEn";
 import { shuffle } from "./questionsAuthors";
 
 

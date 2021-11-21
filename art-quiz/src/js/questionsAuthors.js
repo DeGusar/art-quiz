@@ -1,4 +1,4 @@
-const { default: images } = require("../images");
+import { images } from "../imagesEn";
 
 let authors = []
 images.forEach(item => authors.push(item.author))

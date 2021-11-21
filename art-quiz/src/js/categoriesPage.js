@@ -9,7 +9,7 @@ export  let namesCategories = ['Portrait', 'Landscape', 'Still life', 'Impressio
 import { Question } from "./questionsAuthors";
 import { QuestionPictures } from "./questionsPictures";
 import { Category } from "./category";
-import images from "../images";
+import { images } from "../imagesEn";
 import { pageStarting } from "./settingsPage";
 import { showStartingPage } from "./startingPage";
 import { hideStartingPage } from "./startingPage";

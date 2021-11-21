@@ -6,6 +6,7 @@
     row-gap: 14px;
     justify-content: center;
     & img {
+        cursor: pointer;
         width: calc(50% - 9px);
         border-radius: 15px;
     }

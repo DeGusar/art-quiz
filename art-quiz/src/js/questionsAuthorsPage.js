@@ -292,6 +292,9 @@ export function createQuestionsPicturesPage(array) {
         img.classList.add('img__picture-questions');
         img.src = `./images/img/${item}.jpg`
         div.append(img);
+
+        
+
         img.addEventListener('click', () => {
             if (saves.isTimer) {
                 canceltTimer();
@@ -321,6 +324,13 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
     img.src = `./images/full/${array.questions[array.current].rightAnswer}full.jpg`
+
+    let link_url = document.createElement("a");
+    link_url.classList.add('download');
+    link_url.download = img.src.substring((img.src.lastIndexOf("/") + 1), img.src.length);
+    link_url.href = img.src;
+    div.append(link_url);
+
     let span = document.createElement('span');
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {

@@ -1,6 +1,6 @@
 import "./style.scss"
 
-import images from "./images"
+import { images } from "./imagesEn";
 import { shuffle } from "./js/questionsAuthors"
 import { Question } from "./js/questionsAuthors"
 import { QuestionPictures } from "./js/questionsPictures"

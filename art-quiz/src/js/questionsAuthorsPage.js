@@ -167,7 +167,7 @@ export function createQuestionsAuthorPage(array) {
     div.classList.add('question-buttons__wrapper');
     let img = document.createElement('img');
     img.classList.add('question__img');
-    img.src = `../images/full/${array.questions[array.current].question}full.jpg`
+    img.src = `./images/full/${array.questions[array.current].question}full.jpg`
     questionsAuthorsContainer.append(img);
     questionsAuthorsContainer.append(div);
     let buttonsWrapper = document.createElement('div');
@@ -208,7 +208,7 @@ export function renderPopupAnswer(array, isCorrect, index) {
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
-    img.src = `../images/full/${array.questions[array.current].question}full.jpg`
+    img.src = `./images/full/${array.questions[array.current].question}full.jpg`
     let span = document.createElement('span');
 
     let link_url = document.createElement("a");
@@ -290,7 +290,7 @@ export function createQuestionsPicturesPage(array) {
     array.questions[array.current].answers.forEach((item,index) => {
         let img = document.createElement('img');
         img.classList.add('img__picture-questions');
-        img.src = `../images/img/${item}.jpg`
+        img.src = `./images/img/${item}.jpg`
         div.append(img);
         img.addEventListener('click', () => {
             if (saves.isTimer) {
@@ -320,7 +320,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');
     let img = document.createElement('img');
-    img.src = `../images/full/${array.questions[array.current].rightAnswer}full.jpg`
+    img.src = `./images/full/${array.questions[array.current].rightAnswer}full.jpg`
     let span = document.createElement('span');
     span.classList.add('popupAnswer__marker')
     if (isCorrect) {

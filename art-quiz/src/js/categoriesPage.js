@@ -95,7 +95,7 @@ export function createCategories(array) {
             scoreCategory.textContent = '';
             img.classList.add('grey')
         }
-        img.src = `../images/img/${array[i].questions[0].question}.jpg`
+        img.src = `./images/img/${array[i].questions[0].question}.jpg`
         categoriesWrapper.append(div);
         div.append(divTitleWrap);
        
@@ -175,7 +175,7 @@ export function createCategoriesPictures(array) {
             img.classList.add('grey')
         }
         
-        img.src = `../images/img/${array[i].questions[0].rightAnswer}.jpg`
+        img.src = `./images/img/${array[i].questions[0].rightAnswer}.jpg`
         categoriesWrapper.append(div);
         div.append(divTitleWrap);
         divTitleWrap.append(nameCategory);

@@ -89,11 +89,11 @@ export function createResultPage(array) {
         if (saves.questionsAuthorsСorrectness[array.category*10+i] == 0) {
             img.classList.add('grey')
         }
-            img.src = `../images/img/${array.questions[i].question}.jpg`
+            img.src = `./images/img/${array.questions[i].question}.jpg`
             
             
 
-        imgInv.src = `../images/img/${array.questions[i].question}.jpg`
+        imgInv.src = `./images/img/${array.questions[i].question}.jpg`
             div.append(divTitleWrap);
             div.append(fliper);
             fliper.append(front);
@@ -157,8 +157,8 @@ export function createResultPagePictures(array) {
         if (saves.questionsPicturesСorrectness[(array.category)*10+i] == 0) {
             img.classList.add('grey')
         }
-            img.src = `../images/img/${array.questions[i].rightAnswer}.jpg`
-            imgInv.src = `../images/img/${array.questions[i].rightAnswer}.jpg`
+            img.src = `./images/img/${array.questions[i].rightAnswer}.jpg`
+            imgInv.src = `./images/img/${array.questions[i].rightAnswer}.jpg`
             
         div.append(divTitleWrap);
             div.append(fliper);

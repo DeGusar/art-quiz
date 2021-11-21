@@ -23,6 +23,7 @@ import { createResultPage } from "./resultsPage";
 import { showResultPage } from "./resultsPage";
 import { createResultPagePictures } from "./resultsPage";
 import { showSettingsPage } from "./settingsPage";
+import { resultsPage } from "./resultsPage";
 
 
 let questions = [];
@@ -32,6 +33,7 @@ export let category = [];
 
 
 export function createCategories(array) {
+   
     categoriesWrapper.innerHTML = '';
     for (let i = 0; i < array.length; i++) {
        
@@ -60,13 +62,14 @@ export function createCategories(array) {
         let img = document.createElement('img');
         img.classList.add('imgCategory')
         
-        if (array[i].score > 0) {
+        if (array[i].score !== null) {
             scoreCategory.textContent = `${array[i].score}/10`;
             div.append(divOverlay);
             img.classList.add("unclickable__overlay");
             overlayWrap.addEventListener('click', () => {
-                hideCategoriesPage()
-                showResultPage()
+                /* hideCategoriesPage() */
+                showResultsWithAnimation()
+               /*  showResultPage() */
                 createResultPage(array[i])
             })
            
@@ -82,8 +85,9 @@ export function createCategories(array) {
                    
                 img.classList.remove("unclickable__overlay");
                 overlayWrap.addEventListener('click', () => {
-                    hideCategoriesPage()
-                    showResultPage()
+                    /* hideCategoriesPage() */
+                    showResultsWithAnimation()
+                    /* showResultPage() */
                     createResultPage(array[i])
                 })
                 })
@@ -99,10 +103,14 @@ export function createCategories(array) {
         divTitleWrap.append(scoreCategory);
         div.append(img);
         img.addEventListener('click', function () {
-            showQuestionAuthorPage()
-            hideCategoriesPage()
-            createQuestionsAuthorPage(array[i])
+            /* showQuestionAuthorPage()
+            hideCategoriesPage() */
+            showQuestionsWithAnimation()
+            array[i].current = 0;
             array[i].score = 0;
+            createQuestionsAuthorPage(array[i])
+            
+           
         })
     }
 }
@@ -132,14 +140,14 @@ export function createCategoriesPictures(array) {
         scoreCategory.classList.add('scoreCategory');
         let img = document.createElement('img');
         img.classList.add('imgCategory')
-        if (array[i].score > 0) {
+        if (array[i].score !== null)  {
             scoreCategory.textContent = `${array[i].score}/10`;
 
             div.append(divOverlay);
             img.classList.add("unclickable__overlay");
             overlayWrap.addEventListener('click', () => {
-                hideCategoriesPage()
-                showResultPage()
+                /* hideCategoriesPage() */
+                showResultsWithAnimation()
                 createResultPagePictures(array[i])
             })
           
@@ -155,8 +163,9 @@ export function createCategoriesPictures(array) {
                 img.classList.remove("unclickable__overlay");
 
                     overlayWrap.addEventListener('click', () => {
-                    hideCategoriesPage()
-                    showResultPage()
+                   /*  hideCategoriesPage() */
+                        /*  showResultPage() */
+                        showResultsWithAnimation()
                     createResultPagePictures(array[i])
                 })
                 })
@@ -173,10 +182,13 @@ export function createCategoriesPictures(array) {
         divTitleWrap.append(scoreCategory);
         div.append(img);
         img.addEventListener('click', function () {
-            showQuestionAuthorPage()
-            hideCategoriesPage()
-            createQuestionsPicturesPage(array[i])
+           /*  showQuestionAuthorPage()
+            hideCategoriesPage() */
+            showQuestionsWithAnimation()
+            array[i].current = 0;
             array[i].score = 0;
+            createQuestionsPicturesPage(array[i])
+            
         })
     }
 }
@@ -217,19 +229,59 @@ export function initPicturesQuestions() {
 pageCategories.addEventListener('click', (e) => {
     if (e.target.closest('.nav__home')){
         pageStarting.classList.remove('hide');
-        hideCategoriesPage();
-        showStartingPage()
+        pageStarting.classList.add('pt-page-ontop')
+        pageStarting.classList.add('pt-page-current')
+        pageStarting.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            pageCategories.classList.remove('pt-page-current');
+            pageStarting.classList.remove('pt-page-ontop')
+            pageStarting.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
     }
     if (e.target.closest('.header__nav')) {
         pageStarting.classList.remove('hide');
-        hideCategoriesPage();
-        showStartingPage()
+        pageStarting.classList.add('pt-page-ontop')
+        pageStarting.classList.add('pt-page-current')
+        pageStarting.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            pageCategories.classList.remove('pt-page-current');
+            pageStarting.classList.remove('pt-page-ontop')
+            pageStarting.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
     }
     if (e.target.closest('.nav__score')) {
-        /* hideCategoriesPage(); */
+       
         showSettingsPage();
        
     }
     
     
 })
+
+function showQuestionsWithAnimation() {
+   pageCategories.classList.add('pt-page-rotateSlideOut');
+   questionsAuthorPage.classList.add('pt-page-ontop')
+   questionsAuthorPage.classList.add('pt-page-current')
+   questionsAuthorPage.classList.add('pt-page-rotateSlideIn');
+    window.setTimeout(() => {
+        pageCategories.classList.remove('pt-page-current');
+        questionsAuthorPage.classList.remove('pt-page-ontop');
+        questionsAuthorPage.classList.remove('pt-page-rotateSlideIn');
+        pageCategories.classList.remove('pt-page-rotateSlideOut');
+    }, 1000);
+}
+
+function showResultsWithAnimation() {
+    pageCategories.classList.add('pt-page-rotateSlideOut');
+    resultsPage.classList.add('pt-page-ontop')
+    resultsPage.classList.add('pt-page-current')
+    resultsPage.classList.add('pt-page-rotateSlideIn');
+     window.setTimeout(() => {
+         pageCategories.classList.remove('pt-page-current');
+         resultsPage.classList.remove('pt-page-ontop');
+         resultsPage.classList.remove('pt-page-rotateSlideIn');
+         pageCategories.classList.remove('pt-page-rotateSlideOut');
+     }, 1000);
+}
+
+

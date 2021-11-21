@@ -3,6 +3,10 @@
     height: 100vh;
     font-family: Gilroy;
     overflow: hidden;
+    background-color: black;
+    position: relative;
+    perspective: 1200px;
+	transform-style: preserve-3d;
 }
 .starting {
     position: relative;
@@ -14,6 +18,7 @@
     background-position: center;
     align-items: end;
     justify-content: center;
+    z-index: 3;
 }
 
 .button-settings {

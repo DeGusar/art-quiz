@@ -11,6 +11,7 @@ import { initPicturesQuestions } from "./categoriesPage";
 import { saves } from "./saves";
 
 
+
 export const buttonAuthors = document.querySelector('.button-artists')
 export const buttonPictures = document.querySelector('.button-pictures')
 
@@ -22,15 +23,32 @@ export function hideStartingPage() {
 }
 
 buttonAuthors.addEventListener('click', () => {
-    showCategoriesPage();
-    hideStartingPage()
+    
     initAuthorsQuestions()
-    console.log(saves);
+    pageStarting.classList.add('pt-page-rotateSlideOut');
+    pageCategories.classList.add('pt-page-ontop')
+    pageCategories.classList.add('pt-page-current')
+    pageCategories.classList.add('pt-page-rotateSlideIn');
+    window.setTimeout(() => {
+        pageStarting.classList.remove('pt-page-current');
+        pageCategories.classList.remove('pt-page-ontop');
+        pageCategories.classList.remove('pt-page-rotateSlideIn');
+        pageStarting.classList.remove('pt-page-rotateSlideOut');
+    }, 1000);
+
 })
 buttonPictures.addEventListener('click', () => {
-    showCategoriesPage();
-    hideStartingPage()
     initPicturesQuestions()
+    pageStarting.classList.add('pt-page-rotateSlideOut');
+    pageCategories.classList.add('pt-page-ontop')
+    pageCategories.classList.add('pt-page-current')
+    pageCategories.classList.add('pt-page-rotateSlideIn');
+    window.setTimeout(() => {
+        pageStarting.classList.remove('pt-page-current');
+        pageCategories.classList.remove('pt-page-ontop');
+        pageCategories.classList.remove('pt-page-rotateSlideIn');
+        pageStarting.classList.remove('pt-page-rotateSlideOut');
+    }, 1000);
 })
 
 

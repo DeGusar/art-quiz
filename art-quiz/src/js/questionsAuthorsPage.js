@@ -7,6 +7,8 @@ import { saves } from "./saves";
 import { buttonAuthors } from "./startingPage";
 import { buttonPictures } from "./startingPage";
 import { playSoundResult } from "./audio";
+import { pageCategories } from "./categoriesPage";
+import { pageStarting } from "./settingsPage";
 
 
 export const timerProgress = document.querySelector('.timer__progress');
@@ -18,9 +20,11 @@ const questionsAuthorsPopupAnswerContainer = document.querySelector('.questions-
 const questionsAuthorsPopupResultContainer = document.querySelector('.questions-authors__popupResult');
 const questionsPicturesPopupResultContainer = document.querySelector('.questions-pictures__popupResult');
 const closeQuestionsAuthorPage = document.querySelector('.popup-button-yes');
+const cancelQuestionsAuthorPage = document.querySelector('.popup-button-cancel');
 const resultScore = document.querySelector('.result__score');
 const resultScorePictures = document.querySelector('.result__score_pictures');
 const questionText = document.querySelector('.question__text');
+
 
 
 
@@ -68,32 +72,63 @@ questionsAuthorPage.addEventListener('click', (e) => {
     if (e.target.closest('.questions-authors__close')) {
         showPopupClose();
     }
-    if (e.target.closest('.popup-close') || e.target.closest('.popup-button-cancel')) {
+    if (e.target.closest('.popup-close')) {
         hidePopupClose()
     }
     if (e.target.closest('.popup-button-yes')) {
+        questionsAuthorsContainer.innerHTML = '';
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
         questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
-        hideQuestionAuthorPage();
-        showCategoriesPage();
+        pageCategories.classList.add('pt-page-ontop')
+        pageCategories.classList.add('pt-page-current')
+        pageCategories.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            questionsAuthorPage.classList.remove('pt-page-current');
+            pageCategories.classList.remove('pt-page-ontop')
+            pageCategories.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
         hidePopupClose();
         hidePopupResult()
+        hidePopupAnswer()
     }
+
+    if (e.target.closest('.popup-button-cancel')) {
+        questionsAuthorsContainer.innerHTML = '';
+
+        questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
+        pageStarting.classList.add('pt-page-ontop')
+        pageStarting.classList.add('pt-page-current')
+        pageStarting.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            questionsAuthorPage.classList.remove('pt-page-current');
+            pageStarting.classList.remove('pt-page-ontop')
+            pageStarting.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
+        hidePopupClose();
+        hidePopupResult()
+        hidePopupAnswer()
+}
+
     if (e.target.closest('.result__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
         questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
-        hideQuestionAuthorPage();
+        /*  hideQuestionAuthorPage(); */
+        window.setTimeout(() => questionsAuthorPage.classList.remove('pt-page-current'),1000)
+        
         hidePopupResult()
-        showCategoriesPage();
+        /* showCategoriesPage(); */
         let newClick = new Event('click');
         buttonAuthors.dispatchEvent(newClick);
     }
     if (e.target.closest('.result-Pictures__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
         questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
-        hideQuestionAuthorPage();
+        /* hideQuestionAuthorPage(); */
         hidePopupResultPictures()
-        showCategoriesPage();
+        window.setTimeout(() => questionsAuthorPage.classList.remove('pt-page-current'),1000)
+        
+       /*  showCategoriesPage(); */
         let newClick = new Event('click');
         buttonPictures.dispatchEvent(newClick);
     }
@@ -109,6 +144,7 @@ export function showQuestionAuthorPage() {
 
 
 export function createQuestionsAuthorPage(array) {
+    questionText.textContent = `Who is the author of this picture?`
         let canceltTimer = timer(timerProgress, saves.duration, countTimer);
         timerProgress.addEventListener('change', () => {
             if (timerProgress.value == 0) {
@@ -118,10 +154,13 @@ export function createQuestionsAuthorPage(array) {
         });
         function closePage() {
             canceltTimer();
-            closeQuestionsAuthorPage.removeEventListener('click', closePage)
+            closeQuestionsAuthorPage.removeEventListener('click', closePage);
+            cancelQuestionsAuthorPage.removeEventListener('click', closePage);
+
         }
     if (saves.isTimer) {
         closeQuestionsAuthorPage.addEventListener('click', closePage);
+        cancelQuestionsAuthorPage.addEventListener('click', closePage);
         }
     questionsAuthorsContainer.innerHTML = '';
     let div = document.createElement('div');
@@ -151,12 +190,14 @@ export function createQuestionsAuthorPage(array) {
 
                 saves.questionsAuthorsСorrectness[array.questions[array.current].questionIndex] = 1;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
+                cancelQuestionsAuthorPage.removeEventListener('click', closePage)
             } else {
                 button.classList.add('red__button');
                 playSoundWrong()
                 renderPopupAnswer(array, 0, index)
                 saves.questionsAuthorsСorrectness[array.questions[array.current].questionIndex] = 0;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
+                cancelQuestionsAuthorPage.removeEventListener('click', closePage)
             }
         })
     })
@@ -189,7 +230,7 @@ export function renderPopupAnswer(array, isCorrect, index) {
     pAuthor.textContent = `${array.questions[array.current].author}, ${array.questions[array.current].year}`
     pAuthor.classList.add('popupAnswer__author')
     let button = document.createElement('button');
-    button.textContent = `Продолжить`
+    button.textContent = `Continue`
     button.classList.add('popupAnswer__button');
     button.classList.add('button');
     questionsAuthorsPopupAnswerContainer.append(div);
@@ -208,7 +249,9 @@ export function renderPopupAnswer(array, isCorrect, index) {
             createQuestionsAuthorPage(array)
         } else {
             array.scoreCount(index);
-            resultScore.textContent = `${array.score}/10`
+            resultScore.textContent = `${array.score}/10`;
+           
+
             saves.scoreCategories[array.category] = array.score;
             saves.save()
             array.current = 0;
@@ -233,9 +276,11 @@ export function createQuestionsPicturesPage(array) {
     function closePage() {
         canceltTimer();
         closeQuestionsAuthorPage.removeEventListener('click', closePage)
+        cancelQuestionsAuthorPage.removeEventListener('click', closePage)
     }
     if (saves.isTimer) {
         closeQuestionsAuthorPage.addEventListener('click', closePage);
+        cancelQuestionsAuthorPage.addEventListener('click', closePage);
     }
     questionText.textContent = `${array.questions[array.current].question}`
     questionsAuthorsContainer.innerHTML = '';
@@ -257,12 +302,14 @@ export function createQuestionsPicturesPage(array) {
                 renderPopupAnswerPictures(array, 1, index)
                 saves.questionsPicturesСorrectness[array.questions[array.current].questionIndex-120] = 1;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
+                cancelQuestionsAuthorPage.removeEventListener('click', closePage)
             } else {
                 img.classList.add('red__border');
                 playSoundWrong()
                 renderPopupAnswerPictures(array, 0, index)
                 saves.questionsPicturesСorrectness[array.questions[array.current].questionIndex-120] = 0;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
+                cancelQuestionsAuthorPage.removeEventListener('click', closePage)
             }
         })
     })
@@ -289,7 +336,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
     pAuthor.textContent = `${array.questions[array.current].author}, ${array.questions[array.current].year}`
     pAuthor.classList.add('popupAnswer__author')
     let button = document.createElement('button');
-    button.textContent = `Продолжить`
+    button.textContent = `Continue`
     button.classList.add('popupAnswer__button');
     button.classList.add('button');
     questionsAuthorsPopupAnswerContainer.append(div);
@@ -309,6 +356,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
         } else {
             array.scoreCount(index);
             resultScorePictures.textContent = `${array.score}/10`
+           
             saves.scoreCategoriesPictureType[array.category] = array.score;
             saves.save()
             array.current = 0;

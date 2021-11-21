@@ -16,7 +16,7 @@ const checkBox = document.querySelector('.checkbox');
 const timerWrapper = document.querySelector('.time-buttons__wrapper');
 const buttonSave = document.querySelector('.button__save');
 const buttonDefault = document.querySelector('.button__default');
- let sourceSettings = 0;
+ 
 
 export const checkboxTimer = document.getElementById('status-timer');
 
@@ -33,6 +33,12 @@ buttonSettings.addEventListener('click', openSettings);
 function openSettings() {
     showSettingsPage()
 }
+
+buttonBack.addEventListener('click', closeSettings);
+function closeSettings() {
+    hideSettingsPage()
+}
+
 buttonDefault.addEventListener('click', () => {
     saves.default()
 })
@@ -63,10 +69,7 @@ checkBox.addEventListener('change', () => {
  } 
 })
 
-buttonBack.addEventListener('click', closeSettings);
-function closeSettings() {
-    hideSettingsPage();
-}
+
 
 function audioChangeVolume() {
     let volume = volumeScale.value / 100;

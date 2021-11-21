@@ -7,8 +7,8 @@ export class Saves {
         this.isVolume = volumes;
         this.isTimer = isTimer;
         this.duration = duration;
-        this.scoreCategories = Array(12).fill(0);
-        this.scoreCategoriesPictureType = Array(12).fill(0);
+        this.scoreCategories = Array(12).fill(null);
+        this.scoreCategoriesPictureType = Array(12).fill(null);
         this.questionsAuthorsСorrectness = Array(120).fill(0);
         this.questionsPicturesСorrectness = Array(120).fill(0);
     }

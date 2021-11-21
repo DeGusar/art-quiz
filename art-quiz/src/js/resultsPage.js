@@ -1,12 +1,14 @@
-import { namesCategories } from "./categoriesPage";
+import { namesCategories, pageCategories } from "./categoriesPage";
 import { saves } from "./saves";
 import { showStartingPage } from "./startingPage";
 import { showCategoriesPage } from "./categoriesPage";
 import { showSettingsPage } from "./settingsPage";
+import { pageStarting } from "./settingsPage";
+const resultsText = document.querySelector('.results__title');
 
 
 const resultsWrapper = document.querySelector('.results-images__wrapper');
-const resultsPage = document.querySelector('.results');
+export const resultsPage = document.querySelector('.results');
 
 export function showResultPage() {
     resultsPage.classList.remove('hide');
@@ -19,12 +21,27 @@ function hideResultsPage() {
 
 resultsPage.addEventListener('click', (e) => {
     if (e.target.closest('.results__home') || e.target.closest('.nav__home')) {
-        hideResultsPage();
-        showStartingPage(); 
+        pageStarting.classList.remove('hide');
+        pageStarting.classList.add('pt-page-ontop')
+        pageStarting.classList.add('pt-page-current')
+        pageStarting.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            resultsPage.classList.remove('pt-page-current');
+            pageStarting.classList.remove('pt-page-ontop')
+            pageStarting.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
     }
     if (e.target.closest('.results__categories') || e.target.closest('.nav__categories')) {
-        hideResultsPage();
-        showCategoriesPage();
+        pageCategories.classList.remove('hide');
+        pageCategories.classList.add('pt-page-ontop')
+        pageCategories.classList.add('pt-page-current')
+        pageCategories.classList.add('pt-page-rotateSlideIn');
+        window.setTimeout(() => {
+            resultsPage.classList.remove('pt-page-current');
+            pageCategories.classList.remove('pt-page-ontop')
+            pageCategories.classList.remove('pt-page-rotateSlideIn');
+        }, 1000);
+       
     }
     if (e.target.closest('.results__settings')) {
         showSettingsPage()
@@ -41,7 +58,7 @@ export function createResultPage(array) {
         for (let i = 0; i < array.questions.length; i++) {
             let div = document.createElement('div');
             div.classList.add('resultsImgWrap');
-
+            resultsText.textContent = `Result ${saves.scoreCategories[array.category]}/10`
             let pName = document.createElement('p');
             let pYear = document.createElement('p');
             let pAuthor = document.createElement('p');
@@ -107,7 +124,8 @@ export function createResultPage(array) {
 export function createResultPagePictures(array) {
     resultsWrapper.innerHTML = '';
     for (let i = 0; i < array.questions.length; i++) {
-        console.log(array.questions[i].rightAnswer)
+       
+        resultsText.textContent = `Result ${saves.scoreCategoriesPictureType[array.category]}/10`
             let div = document.createElement('div');
             let fliper = document.createElement('div');
             let back = document.createElement('div');

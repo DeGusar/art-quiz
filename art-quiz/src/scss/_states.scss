@@ -51,3 +51,7 @@ body {
         pointer-events: all;
     }
 }
+.visible {
+    visibility: visible;
+    transition: all 1s;
+}

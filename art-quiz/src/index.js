@@ -38,6 +38,7 @@ import { showResultPage } from "./js/resultsPage"
 import { createResultPagePictures } from "./js/resultsPage"
 import { showSettingsPage } from "./js/settingsPage"
 import { playSoundResult } from "./js/audio"
+import { resultsPage } from "./js/resultsPage"
 
 
 

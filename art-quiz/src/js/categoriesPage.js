@@ -67,9 +67,7 @@ export function createCategories(array) {
             div.append(divOverlay);
             img.classList.add("unclickable__overlay");
             overlayWrap.addEventListener('click', () => {
-                /* hideCategoriesPage() */
                 showResultsWithAnimation()
-               /*  showResultPage() */
                 createResultPage(array[i])
             })
            
@@ -85,9 +83,7 @@ export function createCategories(array) {
                    
                 img.classList.remove("unclickable__overlay");
                 overlayWrap.addEventListener('click', () => {
-                    /* hideCategoriesPage() */
                     showResultsWithAnimation()
-                    /* showResultPage() */
                     createResultPage(array[i])
                 })
                 })
@@ -103,8 +99,6 @@ export function createCategories(array) {
         divTitleWrap.append(scoreCategory);
         div.append(img);
         img.addEventListener('click', function () {
-            /* showQuestionAuthorPage()
-            hideCategoriesPage() */
             showQuestionsWithAnimation()
             array[i].current = 0;
             array[i].score = 0;
@@ -146,7 +140,6 @@ export function createCategoriesPictures(array) {
             div.append(divOverlay);
             img.classList.add("unclickable__overlay");
             overlayWrap.addEventListener('click', () => {
-                /* hideCategoriesPage() */
                 showResultsWithAnimation()
                 createResultPagePictures(array[i])
             })
@@ -163,8 +156,6 @@ export function createCategoriesPictures(array) {
                 img.classList.remove("unclickable__overlay");
 
                     overlayWrap.addEventListener('click', () => {
-                   /*  hideCategoriesPage() */
-                        /*  showResultPage() */
                         showResultsWithAnimation()
                     createResultPagePictures(array[i])
                 })
@@ -182,8 +173,6 @@ export function createCategoriesPictures(array) {
         divTitleWrap.append(scoreCategory);
         div.append(img);
         img.addEventListener('click', function () {
-           /*  showQuestionAuthorPage()
-            hideCategoriesPage() */
             showQuestionsWithAnimation()
             array[i].current = 0;
             array[i].score = 0;

@@ -26,26 +26,39 @@ const questionText = document.querySelector('.question__text');
 
 
 function showPopupResultPictures() {
-    questionsPicturesPopupResultContainer.classList.add('visible__popup')
+    questionsPicturesPopupResultContainer.classList.add('visible__popup');
+   
+
 }
 function hidePopupResultPictures() {
+  
     questionsPicturesPopupResultContainer.classList.remove('visible__popup')
+    
+
+    
 }
 
 function showPopupClose() {
     questionsAuthorPopupClose.classList.add('visible__popup');
+   
+    
 }
 function showPopupResult() {
     questionsAuthorsPopupResultContainer.classList.add('visible__popup')
+    
 }
 function hidePopupResult() {
     questionsAuthorsPopupResultContainer.classList.remove('visible__popup')
 }
 function showPopupAnswer() {
     questionsAuthorsPopupAnswerContainer.classList.add('visible__popup');
+   
 }
 function hidePopupAnswer() {
-    questionsAuthorsPopupAnswerContainer.classList.remove('visible__popup');
+    questionsAuthorsPopupAnswerContainer.classList.remove('visible__popup')
+    questionsAuthorsPopupAnswerContainer.classList.add('unvisible__popup');
+    
+    
 }
 
 function hidePopupClose() {
@@ -60,6 +73,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
     }
     if (e.target.closest('.popup-button-yes')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
         hideQuestionAuthorPage();
         showCategoriesPage();
         hidePopupClose();
@@ -67,6 +81,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
     }
     if (e.target.closest('.result__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
         hideQuestionAuthorPage();
         hidePopupResult()
         showCategoriesPage();
@@ -75,6 +90,7 @@ questionsAuthorPage.addEventListener('click', (e) => {
     }
     if (e.target.closest('.result-Pictures__button')) {
         questionsAuthorsPopupAnswerContainer.innerHTML = "";
+        questionsAuthorsPopupAnswerContainer.classList.remove('unvisible__popup');
         hideQuestionAuthorPage();
         hidePopupResultPictures()
         showCategoriesPage();
@@ -132,6 +148,7 @@ export function createQuestionsAuthorPage(array) {
                 button.classList.add('green__button');
                 playSoundRight()
                 renderPopupAnswer(array, 1, index);
+
                 saves.questionsAuthorsСorrectness[array.questions[array.current].questionIndex] = 1;
                 closeQuestionsAuthorPage.removeEventListener('click', closePage)
             } else {
@@ -298,6 +315,7 @@ export function renderPopupAnswerPictures(array, isCorrect, index) {
             playSoundResult()
             hidePopupAnswer()
             showPopupResultPictures()
+           
 
             
             

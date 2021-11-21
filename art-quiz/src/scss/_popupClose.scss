@@ -11,9 +11,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 2;
+    opacity: 1;
+    display: none;
+    z-index: 5;
 }
 .popup__text {
     font-style: normal;

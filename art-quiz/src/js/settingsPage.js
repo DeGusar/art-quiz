@@ -17,10 +17,7 @@ const timerWrapper = document.querySelector('.time-buttons__wrapper');
 const buttonSave = document.querySelector('.button__save');
 const buttonDefault = document.querySelector('.button__default');
  
-
 export const checkboxTimer = document.getElementById('status-timer');
-
-
  export function showSettingsPage() {
     pageSettings.classList.remove('hide');
 }
@@ -48,18 +45,14 @@ buttonSave.addEventListener('click', () => {
     saves.isTimer = +checkboxTimer.checked;
     saves.duration = timerInput.value
     saves.save();
-    console.log('saved');
 })
 
 checkBox.addEventListener('change', () => {
     if (!checkBox.checked) {
         timerWrapper.classList.add('unclickable');
         timerWrapper.classList.add('unactive');
-
         timerProgress.classList.add('hide');
         countTimer.classList.add('hide');
-        
-
     } else {
         timerInput.value = saves.duration;
         timerWrapper.classList.remove('unclickable')
@@ -69,18 +62,14 @@ checkBox.addEventListener('change', () => {
  } 
 })
 
-
-
 function audioChangeVolume() {
     let volume = volumeScale.value / 100;
     audio.forEach(elem => {
         elem.volume = volume;
     })
-   
     volumeScale.style.background = `linear-gradient(to right, rgb(3, 168, 3) 0%, rgb(3, 168, 3) ${volume*100}%, #A4A4A4 ${volume*100}%, #A4A4A4 100%)`
 }
 volumeScale.addEventListener('change', audioChangeVolume);
-
 
 function audioMute() {
     audio.forEach(elem => {

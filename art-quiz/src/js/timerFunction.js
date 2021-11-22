@@ -18,8 +18,6 @@ export function timer(element, time, textBlock) {
         }
         start = start - interval;
         time--
-       
-        
     }, 1000);
     return () => {
         clearInterval(intervalId)

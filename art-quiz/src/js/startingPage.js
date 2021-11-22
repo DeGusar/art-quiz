@@ -10,20 +10,18 @@ import { initAuthorsQuestions } from "./categoriesPage";
 import { initPicturesQuestions } from "./categoriesPage";
 import { saves } from "./saves";
 
-
-
 export const buttonAuthors = document.querySelector('.button-artists')
 export const buttonPictures = document.querySelector('.button-pictures')
 
 export function showStartingPage() {
     pageStarting.classList.remove('hide');
 }
+
 export function hideStartingPage() {
     pageStarting.classList.add('hide');
 }
 
 buttonAuthors.addEventListener('click', () => {
-    
     initAuthorsQuestions()
     pageStarting.classList.add('pt-page-rotateSlideOut');
     pageCategories.classList.add('pt-page-ontop')
@@ -35,7 +33,6 @@ buttonAuthors.addEventListener('click', () => {
         pageCategories.classList.remove('pt-page-rotateSlideIn');
         pageStarting.classList.remove('pt-page-rotateSlideOut');
     }, 1000);
-
 })
 buttonPictures.addEventListener('click', () => {
     initPicturesQuestions()

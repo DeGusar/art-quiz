@@ -8,6 +8,5 @@ export function playSoundWrong() {
     soundWrong.play();
  }
 export function playSoundResult() {
-    console.log('play')
     soundResult.play();
  }

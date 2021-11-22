@@ -14,7 +14,6 @@ export class Saves {
     }
     save() {
         localStorage.setItem('settings0164', JSON.stringify(this));
-        console.log(this)
     }
     load() {
         if (localStorage.getItem('settings0164')) {

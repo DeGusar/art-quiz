@@ -1,7 +1,6 @@
 import { images } from "../imagesEn";
 import { shuffle } from "./questionsAuthors";
 
-
 function getRandomPicture(min, max, dontRepeat) {
     let result = Math.round(Math.random() * (max - min) + min);
     if (dontRepeat.includes(result)) {
@@ -10,10 +9,9 @@ function getRandomPicture(min, max, dontRepeat) {
         return result
     }
 }
-
 export class QuestionPictures {
     constructor(index) {
-        this.question = `Какую картину написал ${images[index].author}?`;
+        this.question = `What artwork was painted by ${images[index].author}?`;
         this.questionIndex = index;
         this.rightAnswer = +images[index].imageNum;
         this.firstWrong = getRandomPicture(0, images.length - 1, [this.rightAnswer])
@@ -26,11 +24,8 @@ export class QuestionPictures {
     }
 
     checkAnswer(index) {
-        
         if (this.answers[index] === this.rightAnswer) {
-            
                 return 1
             } else return 0
         }
-    
 }

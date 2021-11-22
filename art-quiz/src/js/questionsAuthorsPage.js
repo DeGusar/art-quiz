@@ -121,8 +121,19 @@ export function showQuestionAuthorPage() {
     questionsAuthorPage.classList.remove('hide');
 }
 
+function preload() {
+    while(arguments.length) {
+        new Image().src = [].shift.call(arguments);
+        console.log('preloaded')
+    }
+}
+
 export function createQuestionsAuthorPage(array) {
     questionText.textContent = `Who is the author of this picture?`
+    if (array.current < 9) {
+        preload(`./images/full/${array.questions[array.current+1].question}full.jpg`)
+    }
+    
         let canceltTimer = timer(timerProgress, saves.duration, countTimer);
         timerProgress.addEventListener('change', () => {
             if (timerProgress.value == 0) {
@@ -152,6 +163,7 @@ export function createQuestionsAuthorPage(array) {
     let buttonsWrapper = document.createElement('div');
     buttonsWrapper.classList.add('question-buttons__wrapper');
     questionsAuthorsContainer.append(buttonsWrapper);
+   
     array.questions[array.current].answers.forEach((item, index) => {
         let button = document.createElement('button');
         button.classList.add('button-answer');
@@ -238,6 +250,10 @@ export function renderPopupAnswer(array, isCorrect, index) {
 }
 
 export function createQuestionsPicturesPage(array) {
+    if (array.current < 9) {
+        preload(`./images/full/${array.questions[array.current].rightAnswer}full.jpg`)
+    }
+   
     let canceltTimer = timer(timerProgress, saves.duration, countTimer);
     timerProgress.addEventListener('change', () => {
             if (timerProgress.value == 0) {
@@ -259,7 +275,14 @@ export function createQuestionsPicturesPage(array) {
     let div = document.createElement('div');
     div.classList.add('wrap__images');
     questionsAuthorsContainer.append(div);
-    array.questions[array.current].answers.forEach((item,index) => {
+    if (array.current < 9) {
+        array.questions[array.current + 1].answers.forEach((item, index) => {
+            preload(`./images/img/${item}.jpg`)
+        })
+    }
+    
+    array.questions[array.current].answers.forEach((item, index) => {
+       
         let img = document.createElement('img');
         img.classList.add('img__picture-questions');
         img.src = `./images/img/${item}.jpg`
@@ -288,6 +311,7 @@ export function createQuestionsPicturesPage(array) {
 }
 
 export function renderPopupAnswerPictures(array, isCorrect, index) {
+   
     questionsAuthorsPopupAnswerContainer.innerHTML = "";
     let div = document.createElement('div');
     div.classList.add('popupAnswer__wrapper');

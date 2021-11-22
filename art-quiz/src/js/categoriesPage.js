@@ -25,6 +25,8 @@ import { resultsPage } from "./resultsPage";
 let questions = [];
 export let category = [];
 
+
+
 export function createCategories(array) {
     categoriesWrapper.innerHTML = '';
     for (let i = 0; i < array.length; i++) {

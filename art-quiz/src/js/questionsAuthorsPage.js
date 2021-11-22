@@ -124,7 +124,6 @@ export function showQuestionAuthorPage() {
 function preload() {
     while(arguments.length) {
         new Image().src = [].shift.call(arguments);
-        console.log('preloaded')
     }
 }
 

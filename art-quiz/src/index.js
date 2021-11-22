@@ -41,7 +41,7 @@ import { playSoundResult } from "./js/audio"
 import { resultsPage } from "./js/resultsPage"
 
 
-
+import "./js/selfcheck"
 import "./js/questionsAuthors"
 import "./js/questionsPictures"
 import "./js/category"

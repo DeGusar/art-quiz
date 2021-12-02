@@ -1,5 +1,5 @@
-import { Question } from './questionsAuthors';
-import { QuestionPictures } from './questionsPictures';
+import { Question } from "./questionsAuthors";
+import { QuestionPictures } from "./questionsPictures";
 
 export class Category {
   constructor(category, questions) {
@@ -23,6 +23,5 @@ export class Category {
     this.next();
   }
 
-  end() {
-  }
+  end() {}
 }

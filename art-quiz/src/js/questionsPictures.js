@@ -1,5 +1,5 @@
-import { images } from '../imagesEn';
-import { shuffle } from './questionsAuthors';
+import { images } from "../imagesEn";
+import { shuffle } from "./questionsAuthors";
 
 const allAnswers = [];
 
@@ -33,20 +33,28 @@ export class QuestionPictures {
     this.firstWrong = getRandomPicture(
       0,
       images.length - 1,
-      [this.rightAnswer].concat(allRightAnswers(images[index].author)),
+      [this.rightAnswer].concat(allRightAnswers(images[index].author))
     );
     this.secondWrong = getRandomPicture(
       0,
       images.length - 1,
-      [this.rightAnswer, this.firstWrong].concat(allRightAnswers(images[index].author)),
+      [this.rightAnswer, this.firstWrong].concat(
+        allRightAnswers(images[index].author)
+      )
     );
     this.thirdWrong = getRandomPicture(
       0,
       images.length - 1,
-      [this.rightAnswer, this.firstWrong,
-        this.secondWrong].concat(allRightAnswers(images[index].author)),
+      [this.rightAnswer, this.firstWrong, this.secondWrong].concat(
+        allRightAnswers(images[index].author)
+      )
     );
-    this.answers = shuffle([this.rightAnswer, this.firstWrong, this.secondWrong, this.thirdWrong]);
+    this.answers = shuffle([
+      this.rightAnswer,
+      this.firstWrong,
+      this.secondWrong,
+      this.thirdWrong,
+    ]);
     this.year = images[index].year;
     this.name = images[index].name;
     this.author = images[index].author;
@@ -55,6 +63,7 @@ export class QuestionPictures {
   checkAnswer(index) {
     if (this.answers[index] === this.rightAnswer) {
       return 1;
-    } return 0;
+    }
+    return 0;
   }
 }

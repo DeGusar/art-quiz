@@ -1,4 +1,4 @@
-import { volumeScale, checkboxTimer, timerInput } from './settingsPage';
+import { volumeScale, checkboxTimer, timerInput } from "./settingsPage";
 
 export class Saves {
   constructor(volumes, isTimer, duration) {
@@ -12,12 +12,12 @@ export class Saves {
   }
 
   save() {
-    localStorage.setItem('settings0164', JSON.stringify(this));
+    localStorage.setItem("settings0164", JSON.stringify(this));
   }
 
   load() {
-    if (localStorage.getItem('settings0164')) {
-      const recievedSettings = localStorage.getItem('settings0164');
+    if (localStorage.getItem("settings0164")) {
+      const recievedSettings = localStorage.getItem("settings0164");
       const settings = JSON.parse(recievedSettings);
       saves.isVolume = settings.isVolume;
       saves.isTimer = settings.isTimer;
@@ -25,11 +25,12 @@ export class Saves {
       saves.scoreCategories = settings.scoreCategories;
       saves.scoreCategoriesPictureType = settings.scoreCategoriesPictureType;
       saves.questionsAuthorsСorrectness = settings.questionsAuthorsСorrectness;
-      saves.questionsPicturesСorrectness = settings.questionsPicturesСorrectness;
+      saves.questionsPicturesСorrectness =
+        settings.questionsPicturesСorrectness;
       volumeScale.value = saves.isVolume * 100;
       checkboxTimer.checked = !!saves.isTimer;
       timerInput.value = saves.duration;
-      const event = new Event('change');
+      const event = new Event("change");
       volumeScale.dispatchEvent(event);
       checkboxTimer.dispatchEvent(event);
     }
@@ -44,4 +45,4 @@ export class Saves {
   }
 }
 export const saves = new Saves(0.5, 1, 10);
-window.addEventListener('load', saves.load);
+window.addEventListener("load", saves.load);

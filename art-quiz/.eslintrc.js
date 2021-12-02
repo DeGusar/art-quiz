@@ -4,17 +4,22 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    "prettier"
   ],
   parserOptions: {
     ecmaVersion: 13,
     sourceType: 'module',
   },
+  plugins: [
+    "prettier"
+],
   env: {
     browser: true,
     node: true,
     jasmine: true
   },
   rules: {
+    "prettier/prettier": "error",
     "no-unused-vars": "off",
     "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }],
     "no-param-reassign": 0,

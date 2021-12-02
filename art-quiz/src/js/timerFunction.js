@@ -1,4 +1,4 @@
-import { saves } from './saves';
+import { saves } from "./saves";
 
 export function timer(element, time, textBlock) {
   if (saves.isTimer) {
@@ -8,7 +8,7 @@ export function timer(element, time, textBlock) {
       if (start < 0) {
         clearInterval(intervalId);
         element.value = 0;
-        const event = new Event('change');
+        const event = new Event("change");
         element.dispatchEvent(event);
       } else {
         textBlock.textContent = `${time}`;

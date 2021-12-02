@@ -1,57 +1,36 @@
-import "./style.scss"
+import './style.scss';
 
-import { images } from "./imagesEn";
-import { shuffle } from "./js/questionsAuthors"
-import { Question } from "./js/questionsAuthors"
-import { QuestionPictures } from "./js/questionsPictures"
-import { Category } from "./js/category"
-import { categoriesWrapper } from "./js/categoriesPage"
-import { createCategories } from "./js/categoriesPage"
-import { pageCategories } from "./js/categoriesPage"
-import { showCategoriesPage } from "./js/categoriesPage"
-import { hideCategoriesPage } from "./js/categoriesPage"
-import { pageStarting } from "./js/settingsPage"
-import { initPicturesQuestions } from "./js/categoriesPage"
-import { showStartingPage } from "./js/startingPage"
-import { hideStartingPage } from "./js/startingPage"
-import { timer } from "./js/timerFunction"
-import { createQuestionsPicturesPage, hideQuestionAuthorPage} from "./js/questionsAuthorsPage"
-import { showQuestionAuthorPage } from "./js/questionsAuthorsPage"
-import { category } from "./js/categoriesPage"
-import { createQuestionsAuthorPage } from "./js/questionsAuthorsPage"
-import { questionsAuthorPage } from "./js/questionsAuthorsPage"
-import { timerProgress } from "./js/questionsAuthorsPage"
-import { countTimer } from "./js/questionsAuthorsPage"
-import { playSoundRight } from "./js/audio"
-import { renderPopupAnswer } from "./js/questionsAuthorsPage"
-import { playSoundWrong } from "./js/audio"
-import { Saves } from "./js/saves"
-import { saves } from "./js/saves"
-import { volumeScale } from "./js/settingsPage"
-import { checkboxTimer } from "./js/settingsPage"
-import { timerInput } from "./js/settingsPage"
-import { buttonAuthors } from "./js/startingPage"
-import { buttonPictures } from "./js/startingPage"
-import { namesCategories } from "./js/categoriesPage"
-import { createResultPage } from "./js/resultsPage"
-import { showResultPage } from "./js/resultsPage"
-import { createResultPagePictures } from "./js/resultsPage"
-import { showSettingsPage } from "./js/settingsPage"
-import { playSoundResult } from "./js/audio"
-import { resultsPage } from "./js/resultsPage"
+import { images } from './imagesEn';
+import { shuffle, Question } from './js/questionsAuthors';
 
+import { QuestionPictures } from './js/questionsPictures';
+import { Category } from './js/category';
+import {
+  categoriesWrapper, createCategories, pageCategories, showCategoriesPage, hideCategoriesPage,
+  initPicturesQuestions, category, namesCategories,
+} from './js/categoriesPage';
 
-import "./js/selfcheck"
-import "./js/questionsAuthors"
-import "./js/questionsPictures"
-import "./js/category"
-import "./js/settingsPage"
-import "./js/startingPage"
-import "./js/categoriesPage"
-import "./js/timerFunction"
-import "./js/questionsAuthorsPage"
-import "./js/audio"
-import "./js/saves"
+import {
+  pageStarting, volumeScale, checkboxTimer, timerInput, showSettingsPage,
+} from './js/settingsPage';
 
+import {
+  showStartingPage, hideStartingPage, buttonAuthors, buttonPictures,
+} from './js/startingPage';
 
+import { timer } from './js/timerFunction';
+import {
+  createQuestionsPicturesPage, hideQuestionAuthorPage, showQuestionAuthorPage,
+  createQuestionsAuthorPage, questionsAuthorPage,
+  timerProgress, countTimer, renderPopupAnswer,
+} from './js/questionsAuthorsPage';
 
+import { playSoundRight, playSoundWrong, playSoundResult } from './js/audio';
+
+import { Saves, saves } from './js/saves';
+
+import {
+  createResultPage, showResultPage, createResultPagePictures, resultsPage,
+} from './js/resultsPage';
+
+import './js/selfcheck';
